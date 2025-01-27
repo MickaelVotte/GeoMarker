@@ -2,6 +2,7 @@
 using MediatR;
 using FluentValidation;
 using System.Reflection;
+using GeoMarker.Application.Common.Behaviors;
 
 namespace GeoMarker.Application
 {
@@ -12,6 +13,7 @@ namespace GeoMarker.Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());       
             services.AddMediatR(configuration => configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
         }
     }

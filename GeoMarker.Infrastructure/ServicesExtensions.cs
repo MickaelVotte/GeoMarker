@@ -19,6 +19,7 @@ namespace GeoMarker.Infrastructure
             var connection = configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             
         }
     }
