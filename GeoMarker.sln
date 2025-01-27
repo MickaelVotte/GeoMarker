@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoMarker.Api", "ApiGeoMarker\GeoMarker.Api.csproj", "{E6559F42-1D8E-4EDE-BD13-6F0D77BB78F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoMarker.Api", "ApiGeoMarker\GeoMarker.Api.csproj", "{E6559F42-1D8E-4EDE-BD13-6F0D77BB78F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoMarker.Domain", "GeoMarker.Domain\GeoMarker.Domain.csproj", "{5E0EE229-4CD9-478F-BC20-52E74F14D862}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoMarker.Domain", "GeoMarker.Domain\GeoMarker.Domain.csproj", "{5E0EE229-4CD9-478F-BC20-52E74F14D862}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoMarker.Application", "GeoMarker.Application\GeoMarker.Application.csproj", "{7E98293B-97E5-44FB-A161-7A0277E1C07F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoMarker.Application", "GeoMarker.Application\GeoMarker.Application.csproj", "{7E98293B-97E5-44FB-A161-7A0277E1C07F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoMarker.Infrastructure", "GeoMarker.Infrastructure\GeoMarker.Infrastructure.csproj", "{252F414E-B4DF-43A9-AFE8-1F5799D4D64A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoMarker.Infrastructure", "GeoMarker.Infrastructure\GeoMarker.Infrastructure.csproj", "{252F414E-B4DF-43A9-AFE8-1F5799D4D64A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
