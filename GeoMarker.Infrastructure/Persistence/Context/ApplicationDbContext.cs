@@ -7,7 +7,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GeoMarker.Infrastructure.Persistence
+namespace GeoMarker.Infrastructure.Persistence.Context
 {
     public class ApplicationDbContext : DbContext
     {
@@ -18,7 +18,7 @@ namespace GeoMarker.Infrastructure.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Aplliquer toutes les configurations d'entitiés
+            //Appliquer toutes les configurations d'entitiés
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
 
         }
