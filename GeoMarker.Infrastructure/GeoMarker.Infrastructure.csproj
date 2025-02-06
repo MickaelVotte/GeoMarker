@@ -20,4 +20,11 @@
     <ProjectReference Include="..\GeoMarker.Application\GeoMarker.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Persistence\Migrations\" />
+    <Folder Include="Services\External\" />
+    <Folder Include="Services\Authentification\" />
+    <Folder Include="Logging\" />
+  </ItemGroup>
+
 </Project>

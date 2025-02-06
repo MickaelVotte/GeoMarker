@@ -1,6 +1,6 @@
 ﻿using GeoMarker.Application.Repository;
-using GeoMarker.Infrastructure.Persistence;
-using GeoMarker.Infrastructure.Repository;
+using GeoMarker.Infrastructure.Persistence.Context;
+using GeoMarker.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,8 +19,7 @@ namespace GeoMarker.Infrastructure
             var connection = configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-            
+        
         }
     }
 }
