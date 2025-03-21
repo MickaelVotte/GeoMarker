@@ -13,7 +13,6 @@
   <ItemGroup>
     <Folder Include="Features\Users\Commands\" />
     <Folder Include="Features\Users\Queries\" />
-    <Folder Include="DTOs\" />
     <Folder Include="Mappings\" />
     <Folder Include="Services\" />
     <Folder Include="Validators\" />
