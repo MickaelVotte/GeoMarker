@@ -1,4 +1,5 @@
-﻿using GeoMarker.Application.Repository;
+﻿
+using GeoMarker.Application.Interfaces;
 using GeoMarker.Domain.Common;
 using GeoMarker.Infrastructure.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
@@ -28,9 +29,9 @@ namespace GeoMarker.Infrastructure.Persistence.Repositories
 
         public async Task<T> UpdateAsync(T entity, CancellationToken cancellationToken = default)
         {
-            var result =  _context.Set<T>().Update(entity);
+            _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync(cancellationToken);
-            return result.Entity;
+            return entity;
 
         }
 
@@ -43,7 +44,7 @@ namespace GeoMarker.Infrastructure.Persistence.Repositories
 
         public async Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
-            return await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+            return await _context.Set<T>().FindAsync(id, cancellationToken);
         }
 
         public async Task<List<T>> GetAllAsync(CancellationToken cancellationToken = default)

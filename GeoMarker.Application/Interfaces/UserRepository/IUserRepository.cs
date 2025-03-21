@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GeoMarker.Application.Repositories.UserRepository
+namespace GeoMarker.Application.Interfaces.UserRepository
 {
-    public interface IUserRepository : IBaseRepository<User>
+    public interface IUserRepository :IBaseRepository<User>
     {
         Task<User?> GetByEmailAsync(string email);
         Task<bool> EmailExistsAsync(string email);
