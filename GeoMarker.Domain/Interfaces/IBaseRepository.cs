@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GeoMarker.Application.Interfaces
+namespace GeoMarker.Domain.Interfaces
 {
     public interface IBaseRepository<T> where T : BaseEntity
     {

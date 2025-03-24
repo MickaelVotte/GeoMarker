@@ -14,6 +14,15 @@ namespace GeoMarker.Domain.Entities
         public string LastName { get; private set; }
         public string Email { get; private set; }
         public string PasswordHash { get; private set; }
-    }
 
+
+        public User(string firstname, string lastname, string email, string passwordHash)
+        {
+
+            FirstName = firstname;
+            LastName = lastname;
+            Email = email;
+            PasswordHash = passwordHash;
+        }
+    }
 }

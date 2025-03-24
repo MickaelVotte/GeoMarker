@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GeoMarker.Domain.Interfaces
 {
-    public interface IUserRepository 
+    public interface IUserRepository :IBaseRepository<User>
     {
         Task<User?> GetByEmailAsync(string email);
         Task<bool> EmailExistsAsync(string email);
