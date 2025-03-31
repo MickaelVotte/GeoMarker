@@ -24,7 +24,7 @@
     <Folder Include="Persistence\Migrations\" />
     <Folder Include="Services\External\" />
     <Folder Include="Services\Authentification\" />
-    <Folder Include="Logging\" />
+    <Folder Include="Services\Logging\" />
   </ItemGroup>
 
 </Project>

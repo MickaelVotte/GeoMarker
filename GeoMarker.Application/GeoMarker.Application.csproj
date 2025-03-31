@@ -11,9 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Users\Commands\" />
-    <Folder Include="Features\Users\Queries\" />
+    <Folder Include="Interfaces\" />
     <Folder Include="Mappings\" />
+    <Folder Include="Features\Queries\User\" />
     <Folder Include="Services\" />
     <Folder Include="Validators\" />
   </ItemGroup>
