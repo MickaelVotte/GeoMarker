@@ -1,9 +1,9 @@
 ﻿
 
 using GeoMarker.Domain.Entities;
-using GeoMarker.Domain.;
+using GeoMarker.Domain;
 using GeoMarker.Infrastructure.Persistence.Context;
-using GeoMarker.Application.Interfaces;
+using GeoMarker.Domain.Interfaces;
 
 namespace GeoMarker.Infrastructure.Persistence.Repositories
 {

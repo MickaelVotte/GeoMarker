@@ -1,5 +1,6 @@
 ﻿
 using GeoMarker.Application.Interfaces;
+using GeoMarker.Domain.Interfaces;
 using GeoMarker.Infrastructure.Persistence.Context;
 using GeoMarker.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;

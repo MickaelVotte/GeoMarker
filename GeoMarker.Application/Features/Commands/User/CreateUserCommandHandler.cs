@@ -26,11 +26,12 @@ namespace GeoMarker.Application.Features.Commands.User
             var passwordHash = _passwordHasher.HashPassword(command.Password);
 
             // Création de l'entité User
-            var user = new User( command.FirstName, command.LastName ,command.Email, passwordHash);
+            var user = new User(command.FirstName, command.LastName, command.Email, passwordHash);
 
             // Persistance de l'utilisateur dans la base de données
             await _userRepository.CreateAsync(user);
 
             return user.Id;
         }
+    }
 }
