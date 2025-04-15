@@ -4,6 +4,7 @@ using FluentValidation;
 using System.Reflection;
 using GeoMarker.Application.Common.Behaviors;
 using GeoMarker.Application.Interfaces;
+using GeoMarker.Application.Services.Authentification;
 
 namespace GeoMarker.Application
 {
@@ -15,7 +16,7 @@ namespace GeoMarker.Application
             services.AddMediatR(configuration => configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-            //services.AddScoped<IPasswordHasher, PasswordHasher>())
+            services.AddScoped<IAuthentificationService, AuthentificationService>();
 
 
         }

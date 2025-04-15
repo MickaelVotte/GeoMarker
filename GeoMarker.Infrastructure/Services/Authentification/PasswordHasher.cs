@@ -7,16 +7,16 @@ using GeoMarker.Application.Interfaces;
 
 namespace GeoMarker.Infrastructure.Services.Authentification
 {
-    class PasswordHasher : IPasswordHasher
-    {
-        public string HashPassword(string password)
-        {
-            return password;
-        }
+    //class PasswordHasher : IPasswordHasher
+    //{
+    //    public string HashPassword(string password)
+    //    {
+    //        return password;
+    //    }
 
-        public bool VerifyPassword(string hashedPassword, string providedPassword)
-        {
-            return true;
-        }
-    }
+    //    public bool VerifyPassword(string hashedPassword, string providedPassword)
+    //    {
+    //        return true;
+    //    }
+    //}
 }
