@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GeoMarker.Application.Interfaces;
 
-namespace GeoMarker.Infrastructure.Services.Authentification
+namespace GeoMarker.Infrastructure.Authentification
 {
     //class PasswordHasher : IPasswordHasher
     //{

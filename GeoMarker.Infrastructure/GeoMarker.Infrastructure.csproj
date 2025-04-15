@@ -13,7 +13,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.4" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.8.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,8 +25,6 @@
 
   <ItemGroup>
     <Folder Include="Persistence\Migrations\" />
-    <Folder Include="Services\External\" />
-    <Folder Include="Services\Logging\" />
   </ItemGroup>
 
 </Project>
