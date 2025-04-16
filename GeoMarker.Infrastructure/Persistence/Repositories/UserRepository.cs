@@ -4,25 +4,23 @@ using GeoMarker.Domain.Entities;
 using GeoMarker.Domain;
 using GeoMarker.Infrastructure.Persistence.Context;
 using GeoMarker.Domain.Interfaces;
+using GeoMarker.Application.Common.Interfaces.Persistence;
 
 namespace GeoMarker.Infrastructure.Persistence.Repositories
 {
-    public class UserRepository : BaseRepository<User>, IUserRepository
+    public class UserRepository : IUserRepository
     {
+        private readonly List<User> _users = new();
 
-        private readonly ApplicationDbContext _context;
-        public UserRepository(ApplicationDbContext context) : base(context)
+        public void AddUser(User user)
         {
+           _users.Add(user);
         }
 
-        public Task<bool> EmailExistsAsync(string email)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task<User?> GetByEmailAsync(string email)
+        public User GetUserByEmailAsync(string email)
         {
-            throw new NotImplementedException();
+            return _users.SingleOrDefault(u => u.Email == email);    
         }
     }
 }

@@ -3,7 +3,6 @@ using MediatR;
 using FluentValidation;
 using System.Reflection;
 using GeoMarker.Application.Common.Behaviors;
-using GeoMarker.Application.Interfaces;
 using GeoMarker.Application.Services.Authentification;
 
 namespace GeoMarker.Application

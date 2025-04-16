@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GeoMarker.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,7 @@ namespace GeoMarker.Application.Services.Authentification
 {
     public record AuthentificationResult
     (
-        Guid Id,
-        string FirstName,
-        string LastName,
-        string Email,
+        User User,
         string Token
     );
     

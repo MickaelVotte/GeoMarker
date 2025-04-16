@@ -1,5 +1,6 @@
 ﻿
 using GeoMarker.Application.Common.Interfaces.Authentification;
+using GeoMarker.Application.Common.Interfaces.Persistence;
 using GeoMarker.Application.Common.Interfaces.Services;
 using GeoMarker.Domain.Interfaces;
 using GeoMarker.Infrastructure.Authentification;
@@ -19,11 +20,11 @@ namespace GeoMarker.Infrastructure
         {
             var connection = configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
-            services.AddScoped<IUserRepository, UserRepository>();
-
+      
             services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
             services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
             services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
 
         }

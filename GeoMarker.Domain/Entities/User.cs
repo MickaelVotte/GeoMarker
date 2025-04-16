@@ -10,19 +10,10 @@ namespace GeoMarker.Domain.Entities
     public class User : BaseEntity
     {
 
-        public string FirstName { get; private set; }
-        public string LastName { get; private set; }
-        public string Email { get; private set; }
-        public string PasswordHash { get; private set; }
+        public string FirstName { get; set; } = null!;
+        public string LastName { get; set; } = null!;
+        public string Email { get; set; } = null!;
+        public string Password { get; set; } = null!;
 
-
-        public User(string firstname, string lastname, string email, string passwordHash)
-        {
-
-            FirstName = firstname;
-            LastName = lastname;
-            Email = email;
-            PasswordHash = passwordHash;
-        }
     }
 }
