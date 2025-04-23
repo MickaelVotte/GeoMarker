@@ -20,12 +20,12 @@ namespace GeoMarker.Application.Services.Authentification
             _userRepository = userRepository;   
         }
 
-        public AuthentificationResult Register(string firstName, string lastName, string email, string password)
+        public async Task<AuthentificationResult> Register(string firstName, string lastName, string email, string password)
         {
 
             //check if the user exists in the database
             //if not, throw an exception
-            if (_userRepository.GetUserByEmailAsync(email) != null)
+            if (await _userRepository.GetUserByEmailAsync(email) != null)
             {
                 //if the user exists, throw an exception
                 throw new Exception("User with given email already exists");

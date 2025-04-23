@@ -22,9 +22,9 @@ namespace GeoMarker.Api.Controllers
 
 
             [HttpPost("register")]
-        public IActionResult Register(RegisterRequest request)
+        public async Task<IActionResult> Register(RegisterRequest request)
         {
-            var authResult = _authentificationService.Register(
+            var authResult = await _authentificationService.Register(
                 request.FirstName,
                 request.LastName,
                 request.Email,
