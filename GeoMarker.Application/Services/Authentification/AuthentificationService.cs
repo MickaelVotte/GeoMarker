@@ -39,7 +39,7 @@ namespace GeoMarker.Application.Services.Authentification
                 Password = password,
             };
 
-            _userRepository.AddUser(user);
+            _userRepository.Add(user);
 
  
             Guid userId = Guid.NewGuid();
@@ -52,23 +52,23 @@ namespace GeoMarker.Application.Services.Authentification
             );
         }
 
-        public AuthentificationResult Login(string email, string password)
+        public async Task<AuthentificationResult> Login(string email, string password)
         {
 
             //check if the user exists in the database
-            
-            if (_userRepository.GetUserByEmailAsync(email) is not User user)
+
+            if ((await _userRepository.GetUserByEmailAsync(email)) is not User user)
             {
                 //if the user does not exist, throw an exception
                 throw new Exception("User with given email does not exist");
             }
-            
-            if(user.Password != password)
+
+            if (user.Password != password)
             {
                 //if the password is incorrect, throw an exception
                 throw new Exception("Password is incorrect");
             }
-            
+
             var token = _jwtTokenGenerator.GenerateToken(user);
 
             //create jwt token
@@ -78,6 +78,6 @@ namespace GeoMarker.Application.Services.Authentification
                 token
             );
         }
-      
+
     }
 }

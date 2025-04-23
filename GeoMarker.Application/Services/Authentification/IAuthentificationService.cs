@@ -8,7 +8,7 @@ namespace GeoMarker.Application.Services.Authentification
 {
     public interface IAuthentificationService
     {
-        AuthentificationResult Login(string username, string password);
+        Task<AuthentificationResult> Login(string email, string password);
 
         AuthentificationResult Register(string firstName, string lastName, string email, string password);
     }

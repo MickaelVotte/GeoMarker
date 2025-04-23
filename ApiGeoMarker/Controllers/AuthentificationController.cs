@@ -42,9 +42,9 @@ namespace GeoMarker.Api.Controllers
         }
 
         [HttpPost("login")]
-        public IActionResult Login(LoginRequest request)
+        public async Task<IActionResult> Login(LoginRequest request)
         {
-            var authResult = _authentificationService.Login(
+            var authResult = await _authentificationService.Login(
                 request.Email,
                 request.Password
             );

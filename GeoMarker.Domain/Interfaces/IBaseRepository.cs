@@ -9,10 +9,11 @@ namespace GeoMarker.Domain.Interfaces
 {
     public interface IBaseRepository<T> where T : BaseEntity
     {
-        Task<T> CreateAsync (T entity, CancellationToken cancellationToken = default);
-        Task<T> UpdateAsync (T entity, CancellationToken cancellationToken = default);
-        Task<bool> DeleteAsync (T entity, CancellationToken cancellationToken = default);
-        Task<List<T>> GetAllAsync(CancellationToken cancellationToken);
+        void Add (T entity, CancellationToken cancellationToken = default);
+        void Update (T entity, CancellationToken cancellationToken = default);
+        List<T> GetAll(CancellationToken cancellationToken);
+        void Delete (T entity, CancellationToken cancellationToken = default);
         Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<bool> ExistsAsync(Guid id, CancellationToken cancellationToken = default);
     }
 }
