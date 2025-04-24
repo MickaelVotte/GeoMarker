@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+
+
 
 namespace GeoMarker.Contracts.Authentification
 {
@@ -11,6 +14,12 @@ namespace GeoMarker.Contracts.Authentification
         string FirstName,
         string LastName,
         string Email,
-        string Token);
+        string Token,
+        DateTimeOffset CreateAt,
+        DateTimeOffset? UpdateAt,
+        DateTimeOffset? DeleteAt,
+        Boolean IsActive,
+        string Role
+        );
 
 }

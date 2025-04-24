@@ -1,6 +1,7 @@
 ﻿using GeoMarker.Application.Common.Interfaces.Authentification;
 using GeoMarker.Application.Common.Interfaces.Persistence;
 using GeoMarker.Domain.Entities;
+using GeoMarker.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,11 @@ namespace GeoMarker.Application.Services.Authentification
                 LastName = lastName,
                 Email = email,
                 Password = password,
+                CreateAt = DateTime.UtcNow,
+                UpdateAt = DateTime.UtcNow,
+                DeleteAt = null,
+                IsActive = true,
+                Role = UserRole.User
             };
 
             await _userRepository.AddAsync(user);

@@ -10,7 +10,8 @@ namespace GeoMarker.Contracts.Authentification
     ( string FirstName,
       string LastName,
       string Email,
-      string Password);
+      string Password
+     );
        
     
 }

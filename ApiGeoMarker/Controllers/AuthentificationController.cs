@@ -4,6 +4,7 @@ using GeoMarker.Contracts.Authentification;
 using GeoMarker.Application.Services.Authentification;
 
 
+
 namespace GeoMarker.Api.Controllers
 {
 
@@ -28,7 +29,7 @@ namespace GeoMarker.Api.Controllers
                 request.FirstName,
                 request.LastName,
                 request.Email,
-                request.Password
+                request.Password    
             );
 
             var response = new AuthentificationResponse(
@@ -36,7 +37,12 @@ namespace GeoMarker.Api.Controllers
                 authResult.User.FirstName,
                 authResult.User.LastName,
                 authResult.User.Email,
-                authResult.Token
+                authResult.Token,
+                authResult.User.CreateAt,
+                authResult.User.UpdateAt,
+                authResult.User.DeleteAt,
+                authResult.User.IsActive,
+                authResult.User.Role.ToString()
             );
             return Ok(response);
         }
@@ -54,7 +60,12 @@ namespace GeoMarker.Api.Controllers
                 authResult.User.FirstName,
                 authResult.User.LastName,
                 authResult.User.Email,
-                authResult.Token
+                authResult.Token,
+                authResult.User.CreateAt,
+                authResult.User.UpdateAt,
+                authResult.User.DeleteAt,
+                authResult.User.IsActive,
+                authResult.User.Role.ToString()
             );
             return Ok(response);
         }
