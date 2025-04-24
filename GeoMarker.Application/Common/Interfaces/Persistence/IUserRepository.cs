@@ -12,9 +12,5 @@ namespace GeoMarker.Application.Common.Interfaces.Persistence
     {
         Task<User?> GetUserByEmailAsync(string email, CancellationToken cancellationToken = default);
 
-        //User GetUserByEmailAsync(string email);
-        //void AddUser(User user);
-
-
     }
 }

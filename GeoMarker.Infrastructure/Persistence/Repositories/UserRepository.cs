@@ -11,8 +11,6 @@ namespace GeoMarker.Infrastructure.Persistence.Repositories
 {
     public sealed class UserRepository : BaseRepository<User>,IUserRepository
     {
-        //private readonly List<User> _users = new();
-
         public UserRepository(ApplicationDbContext context) : base(context)
         {
         }
@@ -22,12 +20,6 @@ namespace GeoMarker.Infrastructure.Persistence.Repositories
             return await _dbSet.AsNoTracking().SingleOrDefaultAsync(u => u.Email == email);
 
         }
-    
-
-        //public User GetUserByEmailAsync(string email)
-        //{
-        //    return _users.SingleOrDefault(u => u.Email == email);    
-        //}
-
+  
     }
 }
