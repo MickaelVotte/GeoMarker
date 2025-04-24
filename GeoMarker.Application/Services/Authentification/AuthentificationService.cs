@@ -39,7 +39,7 @@ namespace GeoMarker.Application.Services.Authentification
                 Password = password,
             };
 
-            _userRepository.Add(user);
+            await _userRepository.AddAsync(user);
 
  
             Guid userId = Guid.NewGuid();

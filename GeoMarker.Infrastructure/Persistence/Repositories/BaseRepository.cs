@@ -13,7 +13,7 @@ namespace GeoMarker.Infrastructure.Persistence.Repositories
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
-        protected readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
         protected readonly DbSet<T> _dbSet;
 
         protected BaseRepository(ApplicationDbContext context)
@@ -22,35 +22,39 @@ namespace GeoMarker.Infrastructure.Persistence.Repositories
             _dbSet = context.Set<T>();
         }
 
-        public void Add(T entity, CancellationToken cancellationToken = default)
+        public async Task AddAsync(T entity, CancellationToken cancellationToken = default)
         {
-            _dbSet.Add(entity);
+            await _dbSet.AddAsync(entity, cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
         }
 
-        public void Delete(T entity, CancellationToken cancellationToken = default)
+        public async Task DeleteAsync(T entity, CancellationToken cancellationToken = default)
         {
            _dbSet.Remove(entity);
-           _context.SaveChangesAsync(cancellationToken);
+           await _context.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<bool> ExistsAsync(Guid id, CancellationToken cancellationToken = default)
+        public virtual async Task<bool> ExistsAsync(Guid id, CancellationToken cancellationToken = default)
         {
             return await _dbSet.AnyAsync(e => e.Id == id, cancellationToken);
         }
 
-        public List<T> GetAll(CancellationToken cancellationToken)
+        public virtual IQueryable<T> GetAll(CancellationToken cancellationToken)
         {
-           return _dbSet.ToList();
+           return _dbSet.AsNoTracking();
         }
 
         public virtual async Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
-            return await _dbSet.FindAsync(new object[] { id }, cancellationToken);
+            return await _dbSet.FindAsync(id, cancellationToken);
         }
 
-        public void Update(T entity, CancellationToken cancellationToken = default)
+        public async Task UpdateAsync(T entity, CancellationToken cancellationToken = default)
         {
            _dbSet.Update(entity);
+            await _context.SaveChangesAsync(cancellationToken);
         }
+
+      
     }
 }

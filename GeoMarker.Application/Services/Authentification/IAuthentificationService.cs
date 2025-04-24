@@ -10,6 +10,6 @@ namespace GeoMarker.Application.Services.Authentification
     {
         Task<AuthentificationResult> Login(string email, string password);
 
-        Task <AuthentificationResult> Register(string firstName, string lastName, string email, string password);
+        Task<AuthentificationResult> Register(string firstName, string lastName, string email, string password);
     }
 }

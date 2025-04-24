@@ -19,11 +19,15 @@ namespace GeoMarker.Infrastructure
         public static void ConfigureInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             var connection = configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
-      
+            //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase("GeoMarkerDb"));
             services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
+
+            //Interfaces
             services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
             services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+
+            //Repositories
             services.AddScoped<IUserRepository, UserRepository>();
 
 
