@@ -10,12 +10,12 @@ namespace GeoMarker.Api.Controllers
 
     [Route("auth")]
     [ApiController]
-    public class AuthentificationController : ControllerBase
+    public class AuthController : ControllerBase
     {
 
-        private readonly IAuthentificationService _authentificationService;
+        private readonly IIdentityService _authentificationService;
 
-        public AuthentificationController(IAuthentificationService authentificationService)
+        public AuthController(IIdentityService authentificationService)
         {
             _authentificationService = authentificationService;
         }

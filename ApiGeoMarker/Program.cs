@@ -1,5 +1,6 @@
 using GeoMarker.Infrastructure;
 using GeoMarker.Application;
+using GeoMarker.Api.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 {
@@ -22,6 +23,7 @@ var builder = WebApplication.CreateBuilder(args);
         app.UseAuthentication();
         app.UseAuthorization();
         app.MapControllers();
+        app.UseMiddleware<ErrorHandlingMiddleware>();
         app.Run();
     }
 }

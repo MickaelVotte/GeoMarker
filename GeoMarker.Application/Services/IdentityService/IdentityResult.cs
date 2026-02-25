@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GeoMarker.Application.Services.Authentification
+namespace GeoMarker.Application.Services.IdentityService
 {
-    public record AuthentificationResult
+    public record IdentityResult
     (
         User User,
         string Token

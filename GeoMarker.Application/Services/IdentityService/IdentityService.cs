@@ -10,18 +10,18 @@ using System.Threading.Tasks;
 
 namespace GeoMarker.Application.Services.Authentification
 {
-    public class AuthentificationService : IAuthentificationService
+    public class IdentityService : IIdentityService
     {
         private readonly IJwtTokenGenerator _jwtTokenGenerator;
         private readonly IUserRepository _userRepository;
 
-        public AuthentificationService(IJwtTokenGenerator jwtTokenGenerator, IUserRepository userRepository)
+        public IdentityService(IJwtTokenGenerator jwtTokenGenerator, IUserRepository userRepository)
         {
             _jwtTokenGenerator = jwtTokenGenerator;
             _userRepository = userRepository;   
         }
 
-        public async Task<AuthentificationResult> Register(string firstName, string lastName, string email, string password)
+        public async Task<IdentityResult> Register(string firstName, string lastName, string email, string password)
         {
 
             //check if the user exists in the database
@@ -52,13 +52,13 @@ namespace GeoMarker.Application.Services.Authentification
 
             var token = _jwtTokenGenerator.GenerateToken(user);
 
-            return new AuthentificationResult(
+            return new IdentityResult(
                 user,
                 token
             );
         }
 
-        public async Task<AuthentificationResult> Login(string email, string password)
+        public async Task<IdentityResult> Login(string email, string password)
         {
 
             //check if the user exists in the database
@@ -79,7 +79,7 @@ namespace GeoMarker.Application.Services.Authentification
 
             //create jwt token
 
-            return new AuthentificationResult(
+            return new IdentityResult(
                 user,
                 token
             );
