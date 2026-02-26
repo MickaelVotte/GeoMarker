@@ -1,6 +1,7 @@
 ﻿using GeoMarker.Application.Common.Interfaces.Authentification;
 using GeoMarker.Application.Common.Interfaces.Persistence;
 using GeoMarker.Application.Common.Interfaces.Services;
+using GeoMarker.Application.Exceptions;
 using GeoMarker.Application.Services.IdentityService;
 using GeoMarker.Domain.Entities;
 using MediatR;
@@ -24,7 +25,7 @@ namespace GeoMarker.Application.Features.Users.Commands.CreateUser
 
             if (userExists)
             {
-                throw new Exception("User with this email already exists.");
+                throw new EmailAlreadyTakenException(request.Email);
             }
 
             var passwordHash = _passwordHasher.HashPassword(request.Password);
