@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace GeoMarker.Application.Common.Eceptions
+namespace GeoMarker.Application.Exceptions
 {
     public class BadRequestException : Exception
     {
@@ -55,14 +55,14 @@ namespace GeoMarker.Application.Common.Eceptions
         }
     }
 
-    public class UserAlreadyExistsException : Exception
+    public class EmailAlreadyTakenException : Exception
     {
-        public UserAlreadyExistsException(string email)
-            : base($"User with email {email} already exists.")
+        public EmailAlreadyTakenException(string email)
+            : base($"User with email '{email}' already exists.")
         {
         }
 
-        public UserAlreadyExistsException(string message, Exception innerException)
+        public EmailAlreadyTakenException(string message, Exception innerException)
             : base(message, innerException)
         {
         }

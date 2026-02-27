@@ -1,4 +1,4 @@
-﻿using GeoMarker.Application.Common.Interfaces.Services;
+﻿using GeoMarker.Application.Common.Interfaces.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;

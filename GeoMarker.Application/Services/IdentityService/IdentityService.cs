@@ -1,14 +1,6 @@
 ﻿using GeoMarker.Application.Common.Interfaces.Authentification;
 using GeoMarker.Application.Common.Interfaces.Persistence;
-using GeoMarker.Application.Services.IdentityService;
 using GeoMarker.Domain.Entities;
-using GeoMarker.Domain.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GeoMarker.Application.Services.IdentityService
 {
@@ -26,9 +18,20 @@ namespace GeoMarker.Application.Services.IdentityService
         public IdentityResult Register(User user)
         {
             var token = _jwtTokenGenerator.GenerateToken(user);
- 
-             return new IdentityResult(user, token); 
 
-        }  
+            return new IdentityResult(user, token);
+
+        }
+
+        public IdentityResult Login(string email, string password)
+        {
+            var user = _userRepository.GetUserByEmailAsync(email).Result;
+            if (user == null || user.PasswordHash != password)
+            {
+                throw new Exception("Invalid credentials");
+            }
+            var token = _jwtTokenGenerator.GenerateToken(user);
+            return new IdentityResult(user, token);
+        }
     }
 }

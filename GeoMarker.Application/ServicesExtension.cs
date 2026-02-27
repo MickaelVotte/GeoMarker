@@ -3,7 +3,7 @@ using MediatR;
 using FluentValidation;
 using System.Reflection;
 using GeoMarker.Application.Common.Behaviors;
-using GeoMarker.Application.Services.Authentification;
+using GeoMarker.Application.Services.IdentityService;
 
 namespace GeoMarker.Application
 {
@@ -14,7 +14,7 @@ namespace GeoMarker.Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());       
             services.AddMediatR(configuration => configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             services.AddScoped<IIdentityService, IdentityService>();
 
 

@@ -1,9 +1,7 @@
 ﻿
 using GeoMarker.Application.Common.Interfaces.Authentification;
 using GeoMarker.Application.Common.Interfaces.Persistence;
-using GeoMarker.Application.Common.Interfaces.Services;
-using GeoMarker.Domain.Interfaces;
-using GeoMarker.Infrastructure.Authentification;
+using GeoMarker.Application.Common.Interfaces.Utility;
 using GeoMarker.Infrastructure.Persistence.Context;
 using GeoMarker.Infrastructure.Persistence.Repositories;
 using GeoMarker.Infrastructure.Services;

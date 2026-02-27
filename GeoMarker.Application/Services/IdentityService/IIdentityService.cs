@@ -13,5 +13,6 @@ namespace GeoMarker.Application.Services.IdentityService
     public interface IIdentityService
     {
         IdentityResult Register(User user);
+        IdentityResult Login(string email, string password);
     }
 }

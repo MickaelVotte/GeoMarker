@@ -1,6 +1,5 @@
 ﻿using GeoMarker.Application.Common.Interfaces.Authentification;
 using GeoMarker.Application.Common.Interfaces.Persistence;
-using GeoMarker.Application.Common.Interfaces.Services;
 using GeoMarker.Application.Exceptions;
 using GeoMarker.Application.Services.IdentityService;
 using GeoMarker.Domain.Entities;

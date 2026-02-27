@@ -1,19 +1,13 @@
 ﻿using GeoMarker.Application.Common.Interfaces.Authentification;
-using GeoMarker.Application.Common.Interfaces.Services;
+using GeoMarker.Application.Common.Interfaces.Utility;
 using GeoMarker.Domain.Entities;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace GeoMarker.Infrastructure.Authentification
+namespace GeoMarker.Infrastructure.Services
 {
     public class JwtTokenGenerator : IJwtTokenGenerator
     {
@@ -21,10 +15,10 @@ namespace GeoMarker.Infrastructure.Authentification
         private readonly JwtSettings _jwtSettings;  
 
         public JwtTokenGenerator(IDateTimeProvider 
-            dateTimeProvider, IOptions<JwtSettings>JwtOption)
+            dateTimeProvider, IOptions<JwtSettings> jwtSettings)
         {
             _dateTimeProvider = dateTimeProvider;
-            _jwtSettings = JwtOption.Value; 
+            _jwtSettings = jwtSettings.Value; 
         }
 
         public string GenerateToken(User user)
@@ -37,6 +31,9 @@ namespace GeoMarker.Infrastructure.Authentification
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var securityToken = new JwtSecurityToken(
                 issuer: _jwtSettings.Issuer,
