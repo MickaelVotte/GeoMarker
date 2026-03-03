@@ -2,6 +2,7 @@
 using GeoMarker.Application.Common.Interfaces.Authentification;
 using GeoMarker.Application.Common.Interfaces.Persistence;
 using GeoMarker.Application.Common.Interfaces.Utility;
+using GeoMarker.Infrastructure.Authentification;
 using GeoMarker.Infrastructure.Persistence.Context;
 using GeoMarker.Infrastructure.Persistence.Repositories;
 using GeoMarker.Infrastructure.Services;
@@ -21,13 +22,13 @@ namespace GeoMarker.Infrastructure
             services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase("GeoMarkerDb"));
             services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
 
-            //Interfaces
+            //Services
             services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
             services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+            services.AddScoped<IPasswordHasher, PasswordHasher>();
 
             //Repositories
             services.AddScoped<IUserRepository, UserRepository>();
-
 
         }
     }
