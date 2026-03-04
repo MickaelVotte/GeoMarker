@@ -19,7 +19,7 @@ namespace GeoMarker.Infrastructure
         {
             var connection = configuration.GetConnectionString("DefaultConnection");
             //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer("GeoMarkerDb"));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
             services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
 
             //Services

@@ -34,8 +34,4 @@
     <ProjectReference Include="..\GeoMarker.Application\GeoMarker.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Persistence\Migrations\" />
-  </ItemGroup>
-
 </Project>

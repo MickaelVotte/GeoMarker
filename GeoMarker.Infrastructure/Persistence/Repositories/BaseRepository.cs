@@ -1,7 +1,7 @@
 ﻿
 using GeoMarker.Domain.Interfaces;
 using GeoMarker.Domain.Common;
-using GeoMarker.Infrastructure.Persistence.Context;
+using GeoMarker.Infrastructure.Persistence.DataContext;
 using Microsoft.EntityFrameworkCore;
 
 namespace GeoMarker.Infrastructure.Persistence.Repositories
