@@ -3,7 +3,7 @@ using GeoMarker.Application.Common.Interfaces.Authentification;
 using GeoMarker.Application.Common.Interfaces.Persistence;
 using GeoMarker.Application.Common.Interfaces.Utility;
 using GeoMarker.Infrastructure.Authentification;
-using GeoMarker.Infrastructure.Persistence.Context;
+using GeoMarker.Infrastructure.Persistence.DataContext;
 using GeoMarker.Infrastructure.Persistence.Repositories;
 using GeoMarker.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +19,7 @@ namespace GeoMarker.Infrastructure
         {
             var connection = configuration.GetConnectionString("DefaultConnection");
             //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
-            services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase("GeoMarkerDb"));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer("GeoMarkerDb"));
             services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
 
             //Services
