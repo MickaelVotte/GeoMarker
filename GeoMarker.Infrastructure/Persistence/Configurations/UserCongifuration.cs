@@ -1,4 +1,5 @@
 ﻿using GeoMarker.Domain.Entities;
+using GeoMarker.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -17,5 +18,10 @@ public class UserCongifuration : IEntityTypeConfiguration<User>
                .WithOne(m => m.User)
                .HasForeignKey(m => m.UserId)
                .OnDelete(DeleteBehavior.Cascade);
+        builder.Property(u => u.Role)
+            .HasConversion(v => v.ToString(), v => (UserRole)Enum.Parse(typeof(UserRole), v))
+            .IsRequired()
+            .HasMaxLength(20)
+            .HasDefaultValue(UserRole.User);
     }
 }

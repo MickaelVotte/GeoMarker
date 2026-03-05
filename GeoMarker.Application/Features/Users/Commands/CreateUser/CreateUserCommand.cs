@@ -1,4 +1,5 @@
 ﻿using GeoMarker.Application.Services.IdentityService;
+using GeoMarker.Domain.Enums;
 using MediatR;
 
 namespace GeoMarker.Application.Features.Users.Commands.CreateUser
@@ -7,7 +8,8 @@ namespace GeoMarker.Application.Features.Users.Commands.CreateUser
         string FirstName,
         string LastName,
         string Email,
-        string Password
+        string Password,
+       UserRole Role
     ) : IRequest<IdentityResult>;
 
 }

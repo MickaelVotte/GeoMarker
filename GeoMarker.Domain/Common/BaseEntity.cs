@@ -14,6 +14,5 @@ namespace GeoMarker.Domain.Common
         public DateTimeOffset? UpdateAt { get; set; } 
         public DateTimeOffset? DeleteAt { get; set; }
         public bool IsActive { get; set; } = true;
-        public UserRole Role { get; set; } = UserRole.User;
     }
 }

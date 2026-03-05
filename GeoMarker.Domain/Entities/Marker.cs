@@ -1,4 +1,5 @@
 ﻿using GeoMarker.Domain.Common;
+using GeoMarker.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
