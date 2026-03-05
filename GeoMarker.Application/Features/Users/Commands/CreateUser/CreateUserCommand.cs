@@ -8,8 +8,7 @@ namespace GeoMarker.Application.Features.Users.Commands.CreateUser
         string FirstName,
         string LastName,
         string Email,
-        string Password,
-       UserRole Role
+        string Password
     ) : IRequest<IdentityResult>;
 
 }

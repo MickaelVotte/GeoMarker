@@ -3,6 +3,7 @@ using GeoMarker.Application.Common.Interfaces.Persistence;
 using GeoMarker.Application.Exceptions;
 using GeoMarker.Application.Services.IdentityService;
 using GeoMarker.Domain.Entities;
+using GeoMarker.Domain.Enums;
 using MediatR;
 
 namespace GeoMarker.Application.Features.Users.Commands.CreateUser
@@ -34,7 +35,7 @@ namespace GeoMarker.Application.Features.Users.Commands.CreateUser
                 request.LastName,
                 request.Email,
                 passwordHash,
-                request.Role
+                UserRole.User
              );
 
             await _userRepository.AddAsync(user, cancellationToken);
