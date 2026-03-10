@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GeoMarker.Application\GeoMarker.Application.csproj" />
-    <ProjectReference Include="..\GeoMarker.Contracts\GeoMarker.Contracts.csproj" />
     <ProjectReference Include="..\GeoMarker.Infrastructure\GeoMarker.Infrastructure.csproj" />
   </ItemGroup>
 

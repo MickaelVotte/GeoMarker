@@ -1,6 +1,8 @@
-﻿using GeoMarker.Application.Common.Interfaces.Authentification;
+﻿using AutoMapper;
+using GeoMarker.Application.Common.Interfaces.Authentification;
 using GeoMarker.Application.Common.Interfaces.Persistence;
 using GeoMarker.Application.Exceptions;
+using GeoMarker.Application.Features.Users.DTOs;
 using GeoMarker.Application.Services.IdentityService;
 using GeoMarker.Domain.Entities;
 using GeoMarker.Domain.Enums;
@@ -8,18 +10,24 @@ using MediatR;
 
 namespace GeoMarker.Application.Features.Users.Commands.CreateUser
 {
-   public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, IdentityResult>
+   public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, CreateUserResponse>
     {
         private readonly IUserRepository _userRepository;
         private readonly IPasswordHasher _passwordHasher;
         private readonly IJwtTokenGenerator _jwtTokenGenerator;
-        public CreateUserCommandHandler(IUserRepository userRepository, IPasswordHasher passwordHasher, IJwtTokenGenerator jwtTokenGenerator)
+        private readonly IMapper _mapper;
+        public CreateUserCommandHandler(
+            IUserRepository userRepository,
+            IPasswordHasher passwordHasher,
+            IJwtTokenGenerator jwtTokenGenerator,
+            IMapper mapper)
         {
             _userRepository = userRepository;
             _passwordHasher = passwordHasher;
             _jwtTokenGenerator = jwtTokenGenerator;
+            _mapper = mapper;
         }
-        public async Task<IdentityResult> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        public async Task<CreateUserResponse> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             var userExists = await _userRepository.ExistsByEmailAsync(request.Email, cancellationToken);
 
@@ -34,15 +42,15 @@ namespace GeoMarker.Application.Features.Users.Commands.CreateUser
                 request.FirstName,
                 request.LastName,
                 request.Email,
-                passwordHash,
+                request.Password,
                 UserRole.User
-             );
+                );
 
             await _userRepository.AddAsync(user, cancellationToken);
 
             var token = _jwtTokenGenerator.GenerateToken(user);
 
-            return new IdentityResult(user, token);
+            return _mapper.Map<CreateUserResponse>(user) with { Token = token};
         }
     }
 
