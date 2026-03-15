@@ -4,8 +4,9 @@ namespace GeoMarker.Domain.Enums
 {
     public enum UserRole
     {
-        User = 0,
-        Admin,
-        Moderator
+        None = 0,
+        User = 1,
+        Admin = 2,
+       
     }
 }

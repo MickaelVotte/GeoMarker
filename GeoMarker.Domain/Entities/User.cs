@@ -27,6 +27,18 @@ namespace GeoMarker.Domain.Entities
             PasswordHash = passewordhash;
             Role = role;
         }
+
+
+        public void EmailUpdate(string email)
+        {
+            if(string.IsNullOrWhiteSpace(email))
+            {
+               throw new ArgumentException("Email cannot be null or empty", nameof(email));
+            }
+            Email = email;
+            UpdateAt = DateTimeOffset.UtcNow;
+        }
     }
+
 
 }
