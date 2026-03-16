@@ -31,14 +31,76 @@ namespace GeoMarker.Domain.Entities
 
         public void EmailUpdate(string email)
         {
-            if(string.IsNullOrWhiteSpace(email))
+            if (string.IsNullOrWhiteSpace(email))
             {
-               throw new ArgumentException("Email cannot be null or empty", nameof(email));
+                throw new ArgumentException("Email cannot be null or empty", nameof(email));
             }
             Email = email;
             UpdateAt = DateTimeOffset.UtcNow;
         }
+
+        public void PasswordUpdate(string passwordHash)
+        {
+            if (string.IsNullOrWhiteSpace(passwordHash))
+            {
+                throw new ArgumentException("Password hash cannot be null or empty", nameof(passwordHash));
+            }
+            PasswordHash = passwordHash;
+            UpdateAt = DateTimeOffset.UtcNow;
+        }
+
+        public void RoleUpdate(UserRole role)
+        {
+            Role = role;
+            UpdateAt = DateTimeOffset.UtcNow;
+        }
+
+        public void NameUpdate(string firstName, string lastName)
+        {
+            if (string.IsNullOrWhiteSpace(firstName))
+            {
+                throw new ArgumentException("First name cannot be null or empty", nameof(firstName));
+            }
+            if (string.IsNullOrWhiteSpace(lastName))
+            {
+                throw new ArgumentException("Last name cannot be null or empty", nameof(lastName));
+            }
+            FirstName = firstName;
+            LastName = lastName;
+            UpdateAt = DateTimeOffset.UtcNow;
+        }
+
+        public void AddMarker(Marker marker)
+        {
+            if (marker == null)
+            {
+                throw new ArgumentNullException(nameof(marker), "Marker cannot be null");
+            }
+            _markers.Add(marker);
+            UpdateAt = DateTimeOffset.UtcNow;
+        }
+
+        public void RemoveMarker(Marker marker)
+        {
+            if (marker == null)
+            {
+                throw new ArgumentNullException(nameof(marker), "Marker cannot be null");
+            }
+            _markers.Remove(marker);
+            UpdateAt = DateTimeOffset.UtcNow;
+        }
+
+        public void ClearMarkers()
+        {
+            _markers.Clear();
+            UpdateAt = DateTimeOffset.UtcNow;
+        }
+
+        public void Desactivate()
+        {
+            IsActive = false;
+            UpdateAt = DateTimeOffset.UtcNow;
+        }   
+
     }
-
-
 }

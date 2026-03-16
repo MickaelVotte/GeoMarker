@@ -13,6 +13,6 @@ namespace GeoMarker.Domain.Common
         public DateTimeOffset CreateAt { get; private set; } = DateTimeOffset.UtcNow;
         public DateTimeOffset? UpdateAt { get; protected set; } 
         public DateTimeOffset? DeleteAt { get; private set; }
-        public bool IsActive { get; private set; } = true;
+        public bool IsActive { get; protected set; } = true;
     }
 }

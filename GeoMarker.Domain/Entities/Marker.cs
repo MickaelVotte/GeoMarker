@@ -1,10 +1,5 @@
 ﻿using GeoMarker.Domain.Common;
-using GeoMarker.Domain.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace GeoMarker.Domain.Entities
 {
@@ -23,6 +18,8 @@ namespace GeoMarker.Domain.Entities
 
         public Marker(string title, string? description, decimal latitude, decimal longitude, Guid userId)
         {
+            validateLocation(latitude, longitude);
+
             Title = title;
             Description = description;
             Latitude = latitude;
@@ -30,6 +27,43 @@ namespace GeoMarker.Domain.Entities
             UserId = userId;
         }
 
+        public void UpdateTitle(string title)
+        {
+            if (string.IsNullOrWhiteSpace(title))
+            {
+                throw new ArgumentException("Title cannot be null or empty", nameof(title));
+            }
+            Title = title;
+            UpdateAt = DateTimeOffset.UtcNow;
+        }
+
+        public void UpdateDescription(string? description)
+        {
+            Description = description;
+            UpdateAt = DateTimeOffset.UtcNow;
+        }
+
+        public void UpdateLocation(decimal latitude, decimal longitude)
+
+        {
+            validateLocation(latitude,longitude);
+
+            Latitude = latitude;
+            Longitude = longitude;
+            UpdateAt = DateTimeOffset.UtcNow;
+        }
+
+        public void validateLocation(decimal latitude, decimal longitude)
+        {
+            if (latitude < -90 || latitude > 90)
+            {
+                throw new ArgumentOutOfRangeException(nameof(latitude), "Latitude must be between -90 and 90.");
+            }
+            if (longitude < -180 || longitude > 180)
+            {
+                throw new ArgumentOutOfRangeException(nameof(longitude), "Longitude must be between -180 and 180.");
+            }
+        }
 
     }
 
