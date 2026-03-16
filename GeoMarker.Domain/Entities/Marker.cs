@@ -10,8 +10,11 @@ namespace GeoMarker.Domain.Entities
         public string? Description { get; private set; }
         public decimal Latitude { get; private set; }
         public decimal Longitude { get; private set; }
+        public decimal RadiusInKm { get; private set; }
         public Guid UserId { get; private set; }
         public User User { get; private set; } = null!;
+
+       
 
 
         private Marker() { }
