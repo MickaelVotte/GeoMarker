@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using GeoMarker.Contracts.Authentification;
-using GeoMarker.Application.Services.IdentityService;
 using GeoMarker.Application.Features.Users.Commands.CreateUser;
 using MediatR;
 
