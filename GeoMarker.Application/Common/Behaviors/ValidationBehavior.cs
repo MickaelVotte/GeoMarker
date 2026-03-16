@@ -23,9 +23,11 @@ namespace GeoMarker.Application.Common.Behaviors
             }
 
             var context = new ValidationContext<TRequest>(request);
+            var validationResults = await Task.WhenAll(
+                _validators.Select(v => v.ValidateAsync(context, cancellationToken))
+            );
 
-            var errors = _validators
-                .Select(x => x.Validate(context))       // Exécute chaque validateur
+            var errors = validationResults              // Exécute chaque validateur
                 .SelectMany(x => x.Errors)              // Récupère toutes les erreurs
                 .Where(x => x != null)                  // Filtre les erreurs non nulles
                 .ToList();                            

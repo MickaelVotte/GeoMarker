@@ -28,7 +28,9 @@ namespace GeoMarker.Infrastructure
             services.AddScoped<IPasswordHasher, PasswordHasher>();
 
             //Repositories
-            services.AddScoped<IUserRepository, UserRepository>();
+            
+            
+
 
         }
     }

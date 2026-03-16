@@ -1,10 +1,6 @@
 ﻿using GeoMarker.Domain.Entities;
 using GeoMarker.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace GeoMarker.Application.Common.Interfaces.Persistence
 {

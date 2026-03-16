@@ -1,7 +1,8 @@
 ﻿using GeoMarker.Domain.Entities;
+using GeoMarker.Domain.Interfaces;
 
 
-namespace GeoMarker.Domain.Interfaces
+namespace GeoMarker.Application.Interfaces
 {
     public interface IMarkerRepository : IBaseRepository<Marker>
     {

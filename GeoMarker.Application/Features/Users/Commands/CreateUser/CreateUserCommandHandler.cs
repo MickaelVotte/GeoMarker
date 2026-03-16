@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using GeoMarker.Application.Common.Interfaces.Authentification;
+using GeoMarker.Application.Common.Interfaces.Persistence;
 using GeoMarker.Application.Exceptions;
 using GeoMarker.Application.Features.Users.DTOs;
 using GeoMarker.Domain.Entities;
 using GeoMarker.Domain.Enums;
-using GeoMarker.Domain.Interfaces;
 using MediatR;
 
 namespace GeoMarker.Application.Features.Users.Commands.CreateUser
@@ -41,9 +41,9 @@ namespace GeoMarker.Application.Features.Users.Commands.CreateUser
                 request.FirstName,
                 request.LastName,
                 request.Email,
-                request.Password,
+                passwordHash,
                 UserRole.User
-                );
+            );
 
             await _userRepository.AddAsync(user, cancellationToken);
 
