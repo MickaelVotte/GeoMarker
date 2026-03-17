@@ -47,16 +47,19 @@ namespace GeoMarker.Application.Features.Users.Commands.UpdateUser
             else 
             {
                 user.EmailUpdate(request.Email);
-            }
+            }   
 
-            var passwordHash = _passwordHasher.HashPassword(request.Password);
-            if (passwordHash == null)
+            if (!string.IsNullOrEmpty(request.Password))
             {
-                throw new Exception("Password hashing failed");
-            }
-            else
-            {
-                user.PasswordUpdate(passwordHash);
+                var passwordHash = _passwordHasher.HashPassword(request.Password);
+                if (passwordHash == null)
+                {
+                    throw new Exception("Password hashing failed");
+                }
+                else
+                {
+                    user.PasswordUpdate(passwordHash);
+                }
             }
 
                
