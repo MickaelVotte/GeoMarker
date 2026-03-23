@@ -34,6 +34,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Éléments de solution", "�
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "diagrams", "diagrams", "{63BE3EF0-90A6-4C51-821D-55C6E18BFA1E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7805312D-A0AE-4E94-971B-A3AD133FEDE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoMarker.Domain.Tests", "GeoMarker.Domain.Tests\GeoMarker.Domain.Tests.csproj", "{CC99206C-2260-48D1-9FBD-780C051B7371}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5E0EE229-4CD9-478F-BC20-52E74F14D862} = {5E0EE229-4CD9-478F-BC20-52E74F14D862}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +63,10 @@ Global
 		{252F414E-B4DF-43A9-AFE8-1F5799D4D64A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{252F414E-B4DF-43A9-AFE8-1F5799D4D64A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{252F414E-B4DF-43A9-AFE8-1F5799D4D64A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC99206C-2260-48D1-9FBD-780C051B7371}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC99206C-2260-48D1-9FBD-780C051B7371}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC99206C-2260-48D1-9FBD-780C051B7371}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC99206C-2260-48D1-9FBD-780C051B7371}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +77,7 @@ Global
 		{7E98293B-97E5-44FB-A161-7A0277E1C07F} = {7C0B1442-A113-4509-BC89-9C8ECB87B4C9}
 		{252F414E-B4DF-43A9-AFE8-1F5799D4D64A} = {6863D0E7-D61D-4A12-9B65-2ABE3C89723A}
 		{63BE3EF0-90A6-4C51-821D-55C6E18BFA1E} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{CC99206C-2260-48D1-9FBD-780C051B7371} = {7805312D-A0AE-4E94-971B-A3AD133FEDE2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4094BBC7-ACEF-4F65-B1B4-94504FE1D5C4}
