@@ -21,7 +21,7 @@ namespace GeoMarker.Domain.Entities
 
         public Marker(string title, string? description, decimal latitude, decimal longitude, Guid userId)
         {
-            validateLocation(latitude, longitude);
+            ValidateLocation(latitude, longitude);
 
             Title = title;
             Description = description;
@@ -49,14 +49,14 @@ namespace GeoMarker.Domain.Entities
         public void UpdateLocation(decimal latitude, decimal longitude)
 
         {
-            validateLocation(latitude,longitude);
+            ValidateLocation(latitude,longitude);
 
             Latitude = latitude;
             Longitude = longitude;
             UpdateAt = DateTimeOffset.UtcNow;
         }
 
-        public void validateLocation(decimal latitude, decimal longitude)
+        public void ValidateLocation(decimal latitude, decimal longitude)
         {
             if (latitude < -90 || latitude > 90)
             {
@@ -66,6 +66,12 @@ namespace GeoMarker.Domain.Entities
             {
                 throw new ArgumentOutOfRangeException(nameof(longitude), "Longitude must be between -180 and 180.");
             }
+        }
+
+        public void DesactivateMarker()
+        {
+            IsActive = false;
+            DeleteAt = DateTimeOffset.UtcNow;
         }
 
     }

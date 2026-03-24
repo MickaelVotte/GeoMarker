@@ -55,7 +55,6 @@ namespace GeoMarker.Domain.Tests.UserTest
             actMarkerWithDifferentUserId.Should().Throw<ArgumentException>().WithMessage("Marker not found in user's markers (Parameter 'marker')");
         }
 
-
     }
 }
 

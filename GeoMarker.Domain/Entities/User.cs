@@ -146,9 +146,12 @@ namespace GeoMarker.Domain.Entities
         }
 
         public void Desactivate()
-        {
+        { 
+            foreach (var marker in _markers) {
+                marker.DesactivateMarker();
+            }
             IsActive = false;
-            UpdateAt = DateTimeOffset.UtcNow;
+            DeleteAt = DateTimeOffset.UtcNow;
         }   
 
     }
