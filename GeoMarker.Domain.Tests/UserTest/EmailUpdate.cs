@@ -24,7 +24,7 @@ namespace GeoMarker.Domain.Tests.UserTest
             //Arrange
             var user = new User("John", "Doe", "", "hash", UserRole.User);
             //Act
-            Action actNull = () => user.EmailUpdate(null);
+            Action actNull = () => user.EmailUpdate(null!);
             Action actEmpty = () => user.EmailUpdate("");
             //Assert
             actNull.Should().Throw<ArgumentException>().WithMessage("Email cannot be null or empty (Parameter 'email')");

@@ -35,6 +35,14 @@ namespace GeoMarker.Domain.Entities
             {
                 throw new ArgumentException("Email cannot be null or empty", nameof(email));
             }
+            if(email.Length > 255)
+            {
+                throw new ArgumentException("Email cannot be longer than 255 characters", nameof(email));
+            }
+            if(!email.Contains("@"))
+            {
+                throw new ArgumentException("Email must contain @ character", nameof(email));
+            }
             Email = email;
             UpdateAt = DateTimeOffset.UtcNow;
         }
@@ -82,6 +90,14 @@ namespace GeoMarker.Domain.Entities
             if (marker == null)
             {
                 throw new ArgumentNullException(nameof(marker), "Marker cannot be null");
+            }
+            if (marker.UserId != Id)
+            {
+                throw new ArgumentException("Marker's UserId does not match the user's Id", nameof(marker));
+            }
+            if(_markers.Any(m => m.Id == marker.Id))
+            {
+                throw new ArgumentException("Marker with the same Id already exists for this user", nameof(marker));
             }
             _markers.Add(marker);
             UpdateAt = DateTimeOffset.UtcNow;

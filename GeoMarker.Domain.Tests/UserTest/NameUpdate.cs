@@ -24,7 +24,7 @@ namespace GeoMarker.Domain.Tests.UserTest
             //Arrange
             var user = new User("John", "Doe", "johndodo@test.com", "hash", UserRole.User);
             //Act
-            Action actNull = () => user.NameUpdate(null, "Smith");
+            Action actNull = () => user.NameUpdate(null!, "Smith");
             Action actEmpty = () => user.NameUpdate("", "Smith");
             //Assert
             actNull.Should().Throw<ArgumentException>().WithMessage("First name cannot be null or empty (Parameter 'firstName')");
@@ -37,7 +37,7 @@ namespace GeoMarker.Domain.Tests.UserTest
             //Arrange
             var user = new User("John", "Doe", "", "hash", UserRole.User);
             //Act
-            Action actNull = () => user.NameUpdate("Jane", null);
+            Action actNull = () => user.NameUpdate("Jane", null!);
             Action actEmpty = () => user.NameUpdate("Jane", "");
             //Assert
             actNull.Should().Throw<ArgumentException>().WithMessage("Last name cannot be null or empty (Parameter 'lastName')");

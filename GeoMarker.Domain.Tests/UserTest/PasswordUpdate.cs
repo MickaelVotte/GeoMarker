@@ -24,7 +24,7 @@ namespace GeoMarker.Domain.Tests.UserTest
             //Arrange
             var user = new User("John", "Doe", "", "hash", UserRole.User);
             //Act
-            Action actNull = () => user.PasswordUpdate(null);
+            Action actNull = () => user.PasswordUpdate(null!);
             Action actEmpty = () => user.PasswordUpdate("");
             //Assert
             actNull.Should().Throw<ArgumentException>().WithMessage("Password hash cannot be null or empty (Parameter 'passwordHash')");

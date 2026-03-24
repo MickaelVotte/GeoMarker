@@ -1,7 +1,6 @@
 ﻿using FluentAssertions;
 using GeoMarker.Domain.Entities;
 using GeoMarker.Domain.Enums;
-using System.Data;
 using Xunit;
 
 namespace GeoMarker.Domain.Tests.UserTest
