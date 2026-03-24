@@ -51,8 +51,15 @@ namespace GeoMarker.Domain.Entities
 
         public void RoleUpdate(UserRole role)
         {
-            Role = role;
-            UpdateAt = DateTimeOffset.UtcNow;
+            if (Enum.IsDefined(typeof(UserRole), role))
+            {
+                Role = role;
+                UpdateAt = DateTimeOffset.UtcNow;
+            }
+            else
+            {
+                throw new ArgumentException("Invalid user role", nameof(role));
+            }
         }
 
         public void NameUpdate(string firstName, string lastName)
