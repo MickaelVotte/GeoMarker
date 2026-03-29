@@ -2,14 +2,13 @@
 using GeoMarker.Application.Common.Interfaces.Authentification;
 using GeoMarker.Application.Common.Interfaces.Persistence;
 using GeoMarker.Application.Features.Users.DTOs;
-using GeoMarker.Domain.Entities;
 using MediatR;
 
 namespace GeoMarker.Application.Features.Users.Commands.UpdateUser
 {
     public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, UpdateUserResponse>
     {
-        private readonly IMapper _mapper;
+  
         private readonly IUserRepository _userRepository;
         private readonly IJwtTokenGenerator _jwtTokenGenerator;
         private readonly IPasswordHasher _passwordHasher;
@@ -21,7 +20,6 @@ namespace GeoMarker.Application.Features.Users.Commands.UpdateUser
             IPasswordHasher passwordHasher)
 
         {
-            _mapper = mapper;
             _userRepository = userRepository;
             _jwtTokenGenerator = jwtTokenGenerator;
             _passwordHasher = passwordHasher;

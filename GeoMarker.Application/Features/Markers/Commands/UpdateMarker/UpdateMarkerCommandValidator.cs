@@ -1,12 +1,18 @@
-﻿using GeoMarker.Application.Interfaces;
-using FluentValidation;
+﻿using FluentValidation;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace GeoMarker.Application.Features.Markers.Commands.AddMarker
+namespace GeoMarker.Application.Features.Markers.Commands.UpdateMarker
 {
-    public sealed class AddMarkerCommandValidator : AbstractValidator<AddMarkerCommand>
+    public sealed class UpdateMarkerCommandValidator : AbstractValidator<UpdateMarkerCommand>
     {
-        public AddMarkerCommandValidator(IMarkerRepository markerRepository)
+        public UpdateMarkerCommandValidator()
         {
+            RuleFor(x => x.Id)
+                .NotEmpty().WithMessage("Marker ID is required.");
             RuleFor(x => x.Title)
                 .NotEmpty().WithMessage("Title is required.")
                 .MaximumLength(100).WithMessage("Title must not exceed 100 characters.");
