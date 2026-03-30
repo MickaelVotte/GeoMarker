@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GeoMarker.Application.Features.Users.Queries.GetUserMarker
 {
-    public class GetUserMarkersQueryValidator : AbstractValidator<GetUserMarkersQuery>
+    public sealed class GetUserMarkersQueryValidator : AbstractValidator<GetUserMarkersQuery>
     {
         public GetUserMarkersQueryValidator()
         {
