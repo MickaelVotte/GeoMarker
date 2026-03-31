@@ -53,9 +53,17 @@ namespace GeoMarker.Domain.Entities
             {
                 throw new ArgumentNullException(nameof(user), "User cannot be null");
             }
+            if(OwnerId == user.Id)
+            {
+                throw new InvalidOperationException("Owner cannot be added as a member");
+            }
             if (_users.Contains(user))
             {
                 throw new InvalidOperationException("User is already in the group");
+            }
+            if(_users.Count >= 100)
+            {
+                throw new InvalidOperationException("Group cannot have more than 100 members");
             }
             _users.Add(user);
             UpdateAt = DateTimeOffset.UtcNow;

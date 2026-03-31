@@ -17,4 +17,13 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Groups\Commands\RemoveMember\" />
+    <Folder Include="Features\Groups\Commands\DeleteGroup\" />
+    <Folder Include="Features\Groups\Commands\UpdateGroup\" />
+    <Folder Include="Features\Groups\Commands\CreateGroup\" />
+    <Folder Include="Features\Groups\Queries\GetGroupsByUserId\" />
+    <Folder Include="Features\Groups\Queries\GetGroupsByMarkerId\" />
+  </ItemGroup>
+
 </Project>
