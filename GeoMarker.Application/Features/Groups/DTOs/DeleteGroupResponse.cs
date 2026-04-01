@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace GeoMarker.Application.Features.Groups.DTOs
 {
-    public record CreateGroupResponse
-    (
-        Guid Id,
-        string Name
+    public record DeleteGroupResponse
+    (   Guid Id,
+        string Name,
+        string? Description
     );
 }

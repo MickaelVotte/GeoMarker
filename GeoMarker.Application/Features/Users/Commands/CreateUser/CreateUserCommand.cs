@@ -4,6 +4,7 @@ using MediatR;
 namespace GeoMarker.Application.Features.Users.Commands.CreateUser
 {
     public record  CreateUserCommand(
+        Guid Id,
         string FirstName,
         string LastName,
         string Email,

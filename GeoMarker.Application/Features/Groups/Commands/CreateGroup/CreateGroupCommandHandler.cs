@@ -3,6 +3,7 @@ using GeoMarker.Application.Features.Groups.DTOs;
 using GeoMarker.Application.Interfaces;
 using GeoMarker.Domain.Entities;
 using MediatR;
+using AutoMapper;
 
 namespace GeoMarker.Application.Features.Groups.Commands.CreateGroup
 {
@@ -10,11 +11,14 @@ namespace GeoMarker.Application.Features.Groups.Commands.CreateGroup
     {
         private readonly IGroupRepository _groupRepository;
         private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
 
-        public CreateGroupCommandHandler(IGroupRepository groupRepository, IUserRepository userRepository)
+        public CreateGroupCommandHandler(IGroupRepository groupRepository, IUserRepository userRepository, IMapper mapper)
         {
             _groupRepository = groupRepository;
             _userRepository = userRepository;
+            _mapper = mapper;
+
         }
 
         public async Task<CreateGroupResponse> Handle(CreateGroupCommand request, CancellationToken cancellationToken)
@@ -31,7 +35,8 @@ namespace GeoMarker.Application.Features.Groups.Commands.CreateGroup
             );
 
             await _groupRepository.AddAsync(group, cancellationToken);
-            return new CreateGroupResponse(group.Name);
+
+            return _mapper.Map<CreateGroupResponse>(group);
         }
     }
 }

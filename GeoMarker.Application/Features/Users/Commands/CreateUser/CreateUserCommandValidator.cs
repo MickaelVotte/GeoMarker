@@ -14,6 +14,8 @@ namespace GeoMarker.Application.Features.Users.Commands.CreateUser
         public CreateUserCommandValidator(IUserRepository userRepository)
         {
             _userRepository = userRepository;
+            RuleFor(x => x.Id)
+                .NotEmpty().WithMessage("User ID is required.");
             RuleFor(x => x.FirstName)
                 .NotEmpty().WithMessage("First name is required.")
                 .MaximumLength(50).WithMessage("First name must not exceed 50 characters.");
