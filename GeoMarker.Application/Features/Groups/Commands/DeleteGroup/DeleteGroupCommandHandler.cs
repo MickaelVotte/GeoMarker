@@ -40,5 +40,6 @@ namespace GeoMarker.Application.Features.Groups.Commands.DeleteGroup
                 group.Name,
                 group.Description
             );
+        }
     }
 }
