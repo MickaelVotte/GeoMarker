@@ -25,8 +25,20 @@ namespace GeoMarker.Application.Features.Groups.Commands.DeleteGroup
                 throw new Exception("Group not found");
             }
 
-            await _groupRepository.DeleteAsync(group, cancellationToken);
-            return _mapper.Map<DeleteGroupResponse>(group);
-        }
+            if (group.OwnerId != request.OwnerId)
+            {
+                throw new Exception("Only the owner can delete the group");
+            }
+
+            group.DeactivateGroup();
+            await _groupRepository.UpdateAsync(group, cancellationToken);
+            //return _mapper.Map<DeleteGroupResponse>(group);
+
+            return new DeleteGroupResponse
+            (
+                group.Id,
+                group.Name,
+                group.Description
+            );
     }
 }

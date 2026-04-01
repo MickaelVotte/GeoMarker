@@ -12,5 +12,4 @@ namespace GeoMarker.Application.Features.Groups.DTOs
         string Name,
         string? Description
     );
-
 }

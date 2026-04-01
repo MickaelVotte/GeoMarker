@@ -43,7 +43,7 @@ namespace GeoMarker.Application.Features.Groups.Commands.UpdateGroup
             return new UpdateGroupResponse(
                 request.GroupId,
                 request.Name,
-                request.Description ?? string.Empty
+                request.Description
             );
         }
     }

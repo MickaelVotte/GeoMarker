@@ -10,6 +10,7 @@ namespace GeoMarker.Application.Features.Groups.Commands.DeleteGroup
 {
     public record DeleteGroupCommand
     (
+        Guid OwnerId,
         Guid GroupId
     ) : IRequest<DeleteGroupResponse>;
 }

@@ -83,5 +83,11 @@ namespace GeoMarker.Domain.Entities
             _users.Remove(user);
             UpdateAt = DateTimeOffset.UtcNow;
         }
+
+        public void DeactivateGroup()
+        {
+            IsActive = false;
+            DeleteAt = DateTimeOffset.UtcNow;
+        }
     }
 }
