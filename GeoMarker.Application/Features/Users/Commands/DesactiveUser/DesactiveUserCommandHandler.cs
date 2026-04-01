@@ -9,11 +9,14 @@ namespace GeoMarker.Application.Features.Users.Commands.DesactiveUser
     public class DesactiveUserCommandHandler : IRequestHandler<DesactiveUserCommand, DesactiveUserResponse>
     {
         private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
 
         public DesactiveUserCommandHandler(
-            IUserRepository userRepository)
+            IUserRepository userRepository,
+            IMapper mapper)
         {
             _userRepository = userRepository;
+            _mapper = mapper;
         }
 
         public async Task<DesactiveUserResponse> Handle(DesactiveUserCommand request, CancellationToken cancellationToken)
@@ -33,7 +36,7 @@ namespace GeoMarker.Application.Features.Users.Commands.DesactiveUser
 
             await _userRepository.UpdateAsync(user, cancellationToken);
 
-            return new DesactiveUserResponse(request.Id, user.IsActive);
+            return _mapper.Map<DesactiveUserResponse>(user);
 
         }
     }

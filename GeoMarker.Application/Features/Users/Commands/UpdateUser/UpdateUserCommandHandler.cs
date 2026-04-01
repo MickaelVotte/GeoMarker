@@ -12,17 +12,20 @@ namespace GeoMarker.Application.Features.Users.Commands.UpdateUser
         private readonly IUserRepository _userRepository;
         private readonly IJwtTokenGenerator _jwtTokenGenerator;
         private readonly IPasswordHasher _passwordHasher;
+        private readonly IMapper _mapper;
 
         public UpdateUserCommandHandler(
             IMapper mapper,
             IUserRepository userRepository,
             IJwtTokenGenerator jwtTokenGenerator,
-            IPasswordHasher passwordHasher)
+            IPasswordHasher passwordHasher
+           )
 
         {
             _userRepository = userRepository;
             _jwtTokenGenerator = jwtTokenGenerator;
             _passwordHasher = passwordHasher;
+            _mapper = mapper;
 
         }
         public async Task<UpdateUserResponse> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
@@ -63,14 +66,8 @@ namespace GeoMarker.Application.Features.Users.Commands.UpdateUser
                
             await _userRepository.UpdateAsync(user, cancellationToken);
             var token = _jwtTokenGenerator.GenerateToken(user);
+            return _mapper.Map<UpdateUserResponse>(user) with { Token = token };
 
-            return new UpdateUserResponse(
-                request.Id,
-                request.Firstname,
-                request.Lastname,
-                user.Email,
-                token
-            );
         }
     }
 }
