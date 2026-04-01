@@ -152,7 +152,6 @@ namespace GeoMarker.Domain.Entities
             }
             IsActive = false;
             DeleteAt = DateTimeOffset.UtcNow;
-        }   
-
+        }
     }
 }
