@@ -79,6 +79,7 @@ namespace GeoMarker.Domain.Entities
             {
                 throw new InvalidOperationException("User is not in the group");
             }
+            
             _users.Remove(user);
             UpdateAt = DateTimeOffset.UtcNow;
         }
