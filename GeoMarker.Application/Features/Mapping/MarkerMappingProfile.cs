@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GeoMarker.Application.Features.Markers.DTOs;
 using GeoMarker.Application.Features.Users.DTOs;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,10 @@ namespace GeoMarker.Application.Features.Mapping
         public MarkerMappingProfile()
         {
             CreateMap<Domain.Entities.Marker, MarkerDto>();
+            CreateMap<Domain.Entities.Marker, AddMarkerResponse>();
+            CreateMap<Domain.Entities.Marker, DeleteMarkerResponse>();
+            CreateMap<Domain.Entities.Marker, UpdateMarkerResponse>();
+
         }
     }
 }

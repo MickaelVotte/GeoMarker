@@ -41,7 +41,7 @@ namespace GeoMarker.Application.Features.Groups.Commands.AddMember
             }
             group.AddMember(user);
             await _groupRepository.UpdateAsync(group, cancellationToken);
-            return new AddMemberResponse(request.MemberId, user.FirstName, request.GroupId);
+            return _mapper.Map<AddMemberResponse>(group);
         }
     }
 }

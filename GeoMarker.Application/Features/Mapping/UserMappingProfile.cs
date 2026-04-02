@@ -15,7 +15,10 @@ namespace GeoMarker.Application.Features.Mapping
             CreateMap<Domain.Entities.User, UpdateUserResponse>()
                 .ForMember(dest => dest.Token, opt => opt.Ignore());
             CreateMap<Domain.Entities.User, DesactiveUserResponse>();
-   
+            CreateMap<Domain.Entities.User, GetUserMarkersResponse>()
+                .ForMember(dest => dest.Markers, opt => opt.Ignore());
+
+
         }
     }
 }

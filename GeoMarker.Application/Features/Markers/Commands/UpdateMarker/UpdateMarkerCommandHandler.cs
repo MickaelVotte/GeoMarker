@@ -12,13 +12,15 @@ namespace GeoMarker.Application.Features.Markers.Commands.UpdateMarker
     public class UpdateMarkerCommandHandler : IRequestHandler<UpdateMarkerCommand, UpdateMarkerResponse>
     {
         private readonly IMarkerRepository _markerRepository;
+        private readonly IMapper _mapper;
 
         public UpdateMarkerCommandHandler(
             IMarkerRepository markerRepository,
-            IUserRepository userRepository
+            IMapper mapper
             )
         {
             _markerRepository = markerRepository;
+            _mapper = mapper;
         }
 
         public async Task<UpdateMarkerResponse> Handle(UpdateMarkerCommand request, CancellationToken cancellationToken)
@@ -40,13 +42,7 @@ namespace GeoMarker.Application.Features.Markers.Commands.UpdateMarker
             marker.UpdateLocation(request.Latitude, request.Longitude);
 
             await _markerRepository.UpdateAsync(marker, cancellationToken);
-            return new UpdateMarkerResponse(
-                request.Id,
-                request.Title,
-                request.Description ?? string.Empty,
-                request.Latitude,
-                request.Longitude
-            );
+            return _mapper.Map<UpdateMarkerResponse>(marker);
         }
     }
 }

@@ -31,15 +31,10 @@ namespace GeoMarker.Application.Features.Groups.Commands.DeleteGroup
             }
 
             group.DeactivateGroup();
-            await _groupRepository.UpdateAsync(group, cancellationToken);
-            //return _mapper.Map<DeleteGroupResponse>(group);
 
-            return new DeleteGroupResponse
-            (
-                group.Id,
-                group.Name,
-                group.Description
-            );
+            await _groupRepository.UpdateAsync(group, cancellationToken);
+
+            return _mapper.Map<DeleteGroupResponse>(group);
         }
     }
 }

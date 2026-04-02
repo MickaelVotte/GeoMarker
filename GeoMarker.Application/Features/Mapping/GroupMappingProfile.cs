@@ -12,7 +12,10 @@ namespace GeoMarker.Application.Features.Mapping
     {
         public GroupMappingProfile()
         {
-
+            CreateMap<Domain.Entities.Group, AddMemberResponse>();
+            CreateMap<Domain.Entities.Group, CreateGroupResponse>();
+            CreateMap<Domain.Entities.Group, DeleteGroupResponse>();
+            CreateMap<Domain.Entities.Group, UpdateGroupResponse>();
         }
     }
 }

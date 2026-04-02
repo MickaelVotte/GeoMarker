@@ -1,4 +1,5 @@
-﻿using GeoMarker.Application.Common.Interfaces.Persistence;
+﻿using AutoMapper;
+using GeoMarker.Application.Common.Interfaces.Persistence;
 using GeoMarker.Application.Features.Groups.DTOs;
 using GeoMarker.Application.Interfaces;
 using MediatR;
@@ -10,11 +11,16 @@ namespace GeoMarker.Application.Features.Groups.Commands.RemoveMember
     {
         private readonly IGroupRepository _groupRepository;
         private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
 
-        public RemoveMemberCommandHandler(IGroupRepository groupRepository, IUserRepository userRepository)
+        public RemoveMemberCommandHandler(
+            IGroupRepository groupRepository,
+            IUserRepository userRepository,
+            IMapper mapper)
         {
             _groupRepository = groupRepository;
             _userRepository = userRepository;
+            _mapper = mapper;
         }
 
 
@@ -35,8 +41,10 @@ namespace GeoMarker.Application.Features.Groups.Commands.RemoveMember
                 throw new Exception("Only the owner can remove members");
             }
             group.RemoveMember(user);
+
             await _groupRepository.UpdateAsync(group, cancellationToken);
-            return new RemoveMemberResponse(request.MemberId, user.FirstName);
+
+            return _mapper.Map<RemoveMemberResponse>(group);
         }
     }
 }

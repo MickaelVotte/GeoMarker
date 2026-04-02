@@ -1,7 +1,7 @@
 ﻿using GeoMarker.Application.Features.Markers.DTOs;
 using MediatR;
-using GeoMarker.Application.Common.Interfaces.Persistence;
 using GeoMarker.Application.Interfaces;
+using AutoMapper;
 
 
 namespace GeoMarker.Application.Features.Markers.Commands.DeleteMarker
@@ -9,12 +9,16 @@ namespace GeoMarker.Application.Features.Markers.Commands.DeleteMarker
     public class DeleteMarkerCommandHandler : IRequestHandler<DeleteMarkerCommand, DeleteMarkerResponse>
     {
         private readonly IMarkerRepository _markerRepository;
+        private readonly IMapper _mapper;   
 
         public DeleteMarkerCommandHandler(
-            IMarkerRepository markerRepository
+            IMarkerRepository markerRepository,
+            IMapper mapper
+
             )
         {
             _markerRepository = markerRepository;
+            _mapper = mapper;
         }   
 
         public async Task<DeleteMarkerResponse> Handle(DeleteMarkerCommand request, CancellationToken cancellationToken)
@@ -32,13 +36,7 @@ namespace GeoMarker.Application.Features.Markers.Commands.DeleteMarker
             
             await _markerRepository.UpdateAsync(marker, cancellationToken);
 
-            return new DeleteMarkerResponse(
-                request.Id,
-                marker.Title,
-                marker.Description ?? string.Empty,
-                marker.Latitude,
-                marker.Longitude
-            );
+            return _mapper.Map<DeleteMarkerResponse>(marker);
         }
     }
 }

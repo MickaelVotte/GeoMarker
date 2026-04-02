@@ -15,11 +15,16 @@ namespace GeoMarker.Application.Features.Groups.Commands.UpdateGroup
     {
         private readonly IGroupRepository _groupRepository;
         private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
 
-        public UpdateGroupCommandHandler(IGroupRepository groupRepository, IUserRepository user)
+        public UpdateGroupCommandHandler(
+            IGroupRepository groupRepository,
+            IUserRepository user,
+            IMapper mapper)
         {
             _groupRepository = groupRepository;
             _userRepository = user;
+            _mapper = mapper;
         }
 
         public async Task<UpdateGroupResponse> Handle(UpdateGroupCommand request, CancellationToken cancellationToken)
@@ -40,11 +45,7 @@ namespace GeoMarker.Application.Features.Groups.Commands.UpdateGroup
 
             await _groupRepository.UpdateAsync(group, cancellationToken);
 
-            return new UpdateGroupResponse(
-                request.GroupId,
-                request.Name,
-                request.Description
-            );
+            return _mapper.Map<UpdateGroupResponse>(group);
         }
     }
 }
