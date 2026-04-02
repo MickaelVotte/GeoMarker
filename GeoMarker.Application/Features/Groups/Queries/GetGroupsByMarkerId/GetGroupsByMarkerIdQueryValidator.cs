@@ -1,4 +1,4 @@
-﻿using FluentValidation
+﻿using FluentValidation;
 
 namespace GeoMarker.Application.Features.Groups.Queries.GetGroupsByMarkerId
 {
