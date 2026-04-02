@@ -1,9 +1,10 @@
 ﻿using GeoMarker.Domain.Common;
+using GeoMarker.Domain.Interfaces;
 
 
 namespace GeoMarker.Domain.Entities
 {
-    public class Marker : BaseEntity
+    public class Marker : BaseEntity, IDesactivable
     {
 
         public string Title { get; private set; } = null!;
@@ -68,12 +69,11 @@ namespace GeoMarker.Domain.Entities
             }
         }
 
-        public void DesactivateMarker()
+        public void Desactivate()
         {
             IsActive = false;
             DeleteAt = DateTimeOffset.UtcNow;
         }
 
     }
-
 }

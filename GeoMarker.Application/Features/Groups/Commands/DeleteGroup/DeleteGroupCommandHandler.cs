@@ -30,7 +30,7 @@ namespace GeoMarker.Application.Features.Groups.Commands.DeleteGroup
                 throw new Exception("Only the owner can delete the group");
             }
 
-            group.DeactivateGroup();
+            group.Desactivate();
 
             await _groupRepository.UpdateAsync(group, cancellationToken);
 

@@ -32,7 +32,7 @@ namespace GeoMarker.Application.Features.Markers.Commands.DeleteMarker
             {
                 throw new UnauthorizedAccessException("You do not have permission to delete this marker.");
             }
-            marker.DesactivateMarker();
+            marker.Desactivate();
             
             await _markerRepository.UpdateAsync(marker, cancellationToken);
 

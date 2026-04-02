@@ -16,6 +16,7 @@ namespace GeoMarker.Infrastructure.Persistence.DataContext
         }
         public DbSet<User> Users { get; set; } = null!;
         public DbSet<Marker> Markers { get; set; } = null!;
+        public DbSet<Group> Groups { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

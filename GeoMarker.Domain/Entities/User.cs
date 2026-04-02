@@ -1,9 +1,10 @@
 ﻿using GeoMarker.Domain.Common;
 using GeoMarker.Domain.Enums;
+using GeoMarker.Domain.Interfaces;
 
 namespace GeoMarker.Domain.Entities
 {
-    public class User : BaseEntity
+    public class User : BaseEntity, IDesactivable
     {
 
         public string FirstName { get; private set; } = null!;
@@ -148,7 +149,7 @@ namespace GeoMarker.Domain.Entities
         public void Desactivate()
         { 
             foreach (var marker in _markers) {
-                marker.DesactivateMarker();
+                marker.Desactivate();
             }
             IsActive = false;
             DeleteAt = DateTimeOffset.UtcNow;
