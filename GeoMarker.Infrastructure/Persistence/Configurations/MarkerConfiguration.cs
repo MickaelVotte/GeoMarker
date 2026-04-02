@@ -1,6 +1,7 @@
 ﻿using GeoMarker.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
 namespace GeoMarker.Infrastructure.Persistence.Configurations
 {
     public class MarkerConfiguration : IEntityTypeConfiguration<Marker>
@@ -22,7 +23,7 @@ namespace GeoMarker.Infrastructure.Persistence.Configurations
             builder.HasOne(m => m.User)
                 .WithMany(u => u.Markers)
                 .HasForeignKey(m => m.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

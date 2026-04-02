@@ -17,7 +17,7 @@ public class UserCongifuration : IEntityTypeConfiguration<User>
         builder.HasMany(u => u.Markers)
                .WithOne(m => m.User)
                .HasForeignKey(m => m.UserId)
-               .OnDelete(DeleteBehavior.Cascade);
+               .OnDelete(DeleteBehavior.Restrict);
         builder.Property(u => u.Role)
             .HasConversion(v => v.ToString(), v => (UserRole)Enum.Parse(typeof(UserRole), v))
             .IsRequired()
