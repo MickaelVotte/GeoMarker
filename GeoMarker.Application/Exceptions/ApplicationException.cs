@@ -12,7 +12,7 @@ namespace GeoMarker.Application.Exceptions
 
         public string[] Errors { get; set; }
 
-        public BadRequestException(string message) : base(message) 
+        public BadRequestException(string message) : base(message)
         {
             Errors = new[] { message };
         }
@@ -67,5 +67,17 @@ namespace GeoMarker.Application.Exceptions
         {
         }
     }
-}
 
+    public class InvalidCredentialsException : Exception
+    {
+        public InvalidCredentialsException()
+            : base("Invalid email or password.")
+        {
+        }
+        public InvalidCredentialsException(string message, Exception innerException)
+            : base(message, innerException)
+        {
+        }
+    }
+
+}

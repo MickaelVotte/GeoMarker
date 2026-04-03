@@ -32,7 +32,7 @@ namespace GeoMarker.Application.Features.Users.Commands.LoginUser
             var user = await _userRepository.GetUserByEmailAsync(request.Email, cancellationToken);
             if (user is null || !_passwordHasher.VerifyPassword(request.Password, user.PasswordHash))
             {
-                throw new ConnectionException("Error login");
+                throw new InvalidCredentialsException();
             }
             var token = _jwtTokenGenerator.GenerateToken(user);
             return _mapper.Map<LoginUserResponse>(user) with { Token = token };

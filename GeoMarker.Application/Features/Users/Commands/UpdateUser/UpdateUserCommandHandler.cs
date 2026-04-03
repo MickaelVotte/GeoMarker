@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GeoMarker.Application.Common.Interfaces.Authentification;
 using GeoMarker.Application.Common.Interfaces.Persistence;
+using GeoMarker.Application.Exceptions;
 using GeoMarker.Application.Features.Users.DTOs;
 using MediatR;
 
@@ -43,7 +44,7 @@ namespace GeoMarker.Application.Features.Users.Commands.UpdateUser
             var emailExists = await _userRepository.ExistsByEmailAsync(request.Email, cancellationToken);
             if (emailExists && user.Email != request.Email)
             {
-                throw new Exception("Email already exists");
+                throw new EmailAlreadyTakenException(request.Email);
             }
             else 
             {
