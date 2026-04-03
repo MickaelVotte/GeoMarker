@@ -8,7 +8,5 @@ namespace GeoMarker.Application.Interfaces
     {
         Task<IReadOnlyList<Group>> GetGroupsByUserIdAsync(Guid userId, CancellationToken cancellationToken = default);
         Task <IReadOnlyList<Group>> GetGroupsByMarkerIdAsync(Guid markerId, CancellationToken cancellationToken = default);
-        Task DeleteAsync(Group group, CancellationToken cancellationToken = default);
-
     }
 }
