@@ -16,7 +16,10 @@ namespace GeoMarker.Infrastructure.Persistence.Repositories
         }
         public async Task<IReadOnlyList<Group>> GetGroupsByMarkerIdAsync(Guid markerId, CancellationToken cancellationToken = default)
         {
-            return await _dbSet.Where(g => g.Users.Any(m => m.Id == markerId)).ToListAsync(cancellationToken);
+            return await _dbSet
+                .Include(g => g.Users)
+                .Where(g => g.Users.Any(u => u.Markers.Any(m => m.Id == markerId)))
+                .ToListAsync(cancellationToken);
         }
     }
 }

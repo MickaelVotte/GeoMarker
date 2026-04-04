@@ -2,6 +2,7 @@
 using GeoMarker.Application.Common.Interfaces.Authentification;
 using GeoMarker.Application.Common.Interfaces.Persistence;
 using GeoMarker.Application.Common.Interfaces.Utility;
+using GeoMarker.Application.Interfaces;
 using GeoMarker.Infrastructure.Authentification;
 using GeoMarker.Infrastructure.Persistence.DataContext;
 using GeoMarker.Infrastructure.Persistence.Repositories;
@@ -28,9 +29,9 @@ namespace GeoMarker.Infrastructure
             services.AddScoped<IPasswordHasher, PasswordHasher>();
 
             //Repositories
-            
-            
-
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IGroupRepository, GroupRepository>();
+            services.AddScoped<IMarkerRepository, MarkerRepository>();
 
         }
     }

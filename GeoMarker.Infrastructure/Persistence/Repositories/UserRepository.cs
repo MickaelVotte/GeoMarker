@@ -19,7 +19,7 @@ namespace GeoMarker.Infrastructure.Persistence.Repositories
 
         public async Task<User?> GetUserByEmailAsync(string email, CancellationToken cancellationToken = default)
         {
-            return await _dbSet.FindAsync(new object[] { email }, cancellationToken);
+            return await _dbSet.FirstOrDefaultAsync(e => e.Email == email, cancellationToken);
         } 
     }
 }
