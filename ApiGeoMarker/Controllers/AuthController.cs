@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using GeoMarker.Application.Features.Users.Commands.CreateUser;
 using MediatR;
+using GeoMarker.Application.Features.Users.Commands.LoginUser;
 
 
 
@@ -30,56 +31,12 @@ namespace GeoMarker.Api.Controllers
         }
 
 
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(LoginUserCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
 
-        //[HttpPost("register")]
-        //public async Task<IActionResult> Register(RegisterRequest request)
-        //{
-        //    var authResult = await _authentificationService.Register(
-        //        request.FirstName,
-        //        request.LastName,
-        //        request.Email,
-        //        request.Password
-        //    );
-
-        //    var response = new AuthentificationResponse(
-        //        authResult.User.Id,
-        //        authResult.User.FirstName,
-        //        authResult.User.LastName,
-        //        authResult.User.Email,
-        //        authResult.Token,
-        //        authResult.User.CreateAt,
-        //        authResult.User.UpdateAt,
-        //        authResult.User.DeleteAt,
-        //        authResult.User.IsActive,
-        //        authResult.User.Role.ToString()
-        //    );
-        //    return Ok(response);
-        //}
-
-        //[HttpPost("login")]
-        //public async Task<IActionResult> Login(LoginRequest request)
-        //{
-        //    var authResult = await _authentificationService.Login(
-        //        request.Email,
-        //        request.Password
-        //    );
-
-        //    var response = new AuthentificationResponse(
-        //        authResult.User.Id,
-        //        authResult.User.FirstName,
-        //        authResult.User.LastName,
-        //        authResult.User.Email,
-        //        authResult.Token,
-        //        authResult.User.CreateAt,
-        //        authResult.User.UpdateAt,
-        //        authResult.User.DeleteAt,
-        //        authResult.User.IsActive,
-        //        authResult.User.Role.ToString()
-        //    );
-        //    return Ok(response);
-        //}
-
+        }
     }
-
-
 }
