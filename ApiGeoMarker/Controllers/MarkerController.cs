@@ -23,10 +23,10 @@ namespace GeoMarker.Api.Controllers
         }
 
         [HttpPatch("{id}/desactivate")]
-        public async Task<IActionResult> DeleteMarker(Guid id,[FromBody] DeleteMarkerCommand command)
+        public async Task<IActionResult> DeleteMarker([FromBody] DeleteMarkerCommand command)
         {
             var deleteCommand = new DeleteMarkerCommand(
-                Id: id,
+                Id: command.Id,
                 UserId: command.UserId
             );
             var result = await _mediator.Send(deleteCommand);
@@ -41,10 +41,10 @@ namespace GeoMarker.Api.Controllers
         }
 
         [HttpPatch("{id}/updateMarker")]
-        public async Task<IActionResult> UpdateMarker(Guid id, [FromBody] UpdateMarkerCommand command)
+        public async Task<IActionResult> UpdateMarker([FromBody] UpdateMarkerCommand command)
         {
             var updateCommand = new UpdateMarkerCommand(
-                Id: id,
+                Id: command.Id,
                 Title: command.Title,
                 Description: command.Description,
                 Latitude: command.Latitude,

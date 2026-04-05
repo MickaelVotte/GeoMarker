@@ -21,19 +21,21 @@ namespace GeoMarker.Api.Controllers
         }
 
         [HttpPatch("{id}/desactivate")]
-        public async Task<IActionResult> DesactivateUser(Guid id)
+        public async Task<IActionResult> DesactivateUser(DesactiveUserCommand command)
         {
-            var command = new DesactiveUserCommand(id);
-            var result = await _mediator.Send(command);
+            var deletecommand = new DesactiveUserCommand(
+                Id: command.Id
+                );
+            var result = await _mediator.Send(deletecommand);
             return NoContent();
 
         }
 
         [HttpPatch("{id}/update")]
-        public async Task<IActionResult> UpdateUser(Guid id, [FromBody] UpdateUserCommand command)
+        public async Task<IActionResult> UpdateUser([FromBody] UpdateUserCommand command)
         {
             var updateCommand = new UpdateUserCommand(
-                Id: id,
+                Id: command.Id,
                 Firstname: command.Firstname,
                 Lastname: command.Lastname,
                 Email: command.Email,
