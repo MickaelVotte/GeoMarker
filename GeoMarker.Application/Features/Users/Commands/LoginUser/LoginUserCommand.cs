@@ -8,5 +8,5 @@ namespace GeoMarker.Application.Features.Users.Commands.LoginUser
         string Email,
         string Password
     ) : IRequest<LoginUserResponse>;
-    
+
 }
