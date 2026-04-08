@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 namespace GeoMarker.Application.Features.Users.DTOs
 {
     public record GetUserMarkersResponse
-    (
-        Guid UserId,
-        IReadOnlyList<MarkerDto> Markers
-    );
-    
- 
+    { 
+        public Guid UserId { get; init; }
+        public IReadOnlyList<MarkerDto> Markers { get; init; }
+    }
 }

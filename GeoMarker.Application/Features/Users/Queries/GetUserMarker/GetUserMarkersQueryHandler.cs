@@ -21,8 +21,8 @@ namespace GeoMarker.Application.Features.Users.Queries.GetUserMarker
             {
                 throw new KeyNotFoundException($"User with ID {request.Id} not found.");
             }
-            var markerDtos = _mapper.Map<IReadOnlyList<MarkerDto>>(user.Markers);
-            return new GetUserMarkersResponse (user.Id, markerDtos);
+
+            return _mapper.Map<GetUserMarkersResponse>(user);
         }
     }
 }

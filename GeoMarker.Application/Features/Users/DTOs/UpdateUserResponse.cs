@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace GeoMarker.Application.Features.Users.DTOs
 {
-    public record UpdateUserResponse(
-        Guid Id,
-        string Firstname,
-        string Lastname,
-        string Email,
-        string Token
-    );
+    public record UpdateUserResponse
+    {
+        public Guid Id { get; init; }
+        public string Firstname { get; init; } = null!;
+        public string Lastname { get; init; } = null!;
+        public string Email { get; init; } = null!;
+        public string Token { get; init; } = null!;
+    }
 
 }

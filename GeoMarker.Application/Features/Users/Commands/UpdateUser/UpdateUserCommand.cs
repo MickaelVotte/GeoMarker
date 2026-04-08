@@ -15,5 +15,4 @@ namespace GeoMarker.Application.Features.Users.Commands.UpdateUser
         string Email,
         string? Password
     ) : IRequest<UpdateUserResponse>;
-
 }

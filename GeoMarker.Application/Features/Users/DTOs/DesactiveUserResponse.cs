@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace GeoMarker.Application.Features.Users.DTOs
 {
     public record DesactiveUserResponse
-    (
-        Guid Id,
-        bool IsActive
-    );
-    
+    {
+    public Guid Id { get; init; }
+    public bool IsActive { get; init; }
+    }
+
 }

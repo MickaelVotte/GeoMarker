@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 namespace GeoMarker.Application.Features.Users.DTOs
 {
     public record MarkerDto
-    (
-        Guid Id,
-        string Title,
-        string Description,
-        double Latitude,
-        double Longitude
-    );
+    {         public Guid Id { get; init; }
+        public string Title { get; init; } = null!;
+        public string Description { get; init; } = null!;
+        public double Latitude { get; init; }
+        public double Longitude { get; init; }
+    }
 }
