@@ -4,6 +4,6 @@ using MediatR;
 namespace GeoMarker.Application.Features.Users.Queries.GetUserMarker
 {
     public record GetUserMarkersQuery(
-        Guid Id
+        Guid UserId
         ) : IRequest<GetUserMarkersResponse>;
 }

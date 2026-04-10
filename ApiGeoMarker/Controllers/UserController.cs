@@ -3,14 +3,16 @@ using GeoMarker.Application.Features.Users.Commands.UpdateUser;
 using GeoMarker.Application.Features.Users.DTOs;
 using GeoMarker.Application.Features.Users.Queries.GetUserMarker;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace GeoMarker.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UserController : ControllerBase
+    public class UserController : ApiController
     {
         private readonly ISender _mediator;
 
@@ -19,23 +21,24 @@ namespace GeoMarker.Api.Controllers
             _mediator = mediator;
 
         }
-
-        [HttpPatch("{id}/desactivate")]
-        public async Task<IActionResult> DesactivateUser(DesactiveUserCommand command)
+        [Authorize]
+        [HttpPatch("/desactivate")]
+        public async Task<IActionResult> DesactivateUser()
         {
             var deletecommand = new DesactiveUserCommand(
-                Id: command.Id
+                Id: CurrentUserId
                 );
             var result = await _mediator.Send(deletecommand);
             return NoContent();
 
         }
 
-        [HttpPatch("{id}/update")]
+        [Authorize]
+        [HttpPatch("/update")]
         public async Task<IActionResult> UpdateUser([FromBody] UpdateUserCommand command)
         {
             var updateCommand = new UpdateUserCommand(
-                Id: command.Id,
+                Id: CurrentUserId,
                 Firstname: command.Firstname,
                 Lastname: command.Lastname,
                 Email: command.Email,
@@ -46,9 +49,12 @@ namespace GeoMarker.Api.Controllers
             return NoContent();
         }
 
-        [HttpGet("{id}/markers")]
-        public async Task<IActionResult> GetUserMarkers([FromQuery]GetUserMarkersQuery query)
+        [Authorize]
+        [HttpGet("/markers")]
+        public async Task<IActionResult> GetUserMarkers()
         {
+            var userIdFromToken = CurrentUserId;
+            var query = new GetUserMarkersQuery(userIdFromToken);
             var result = await _mediator.Send(query);
             return Ok(result);
         }

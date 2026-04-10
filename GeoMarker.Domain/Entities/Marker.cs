@@ -8,7 +8,7 @@ namespace GeoMarker.Domain.Entities
     {
 
         public string Title { get; private set; } = null!;
-        public string? Description { get; private set; }
+        public string? Description { get; private set; } = null!;
         public decimal Latitude { get; private set; }
         public decimal Longitude { get; private set; }
         public Guid UserId { get; private set; }

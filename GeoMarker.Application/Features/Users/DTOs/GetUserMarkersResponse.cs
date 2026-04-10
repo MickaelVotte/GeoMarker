@@ -10,6 +10,6 @@ namespace GeoMarker.Application.Features.Users.DTOs
     public record GetUserMarkersResponse
     { 
         public Guid UserId { get; init; }
-        public IReadOnlyList<MarkerDto> Markers { get; init; }
+        public IReadOnlyList<MarkerDto> Markers { get; init; }  = null!;
     }
 }

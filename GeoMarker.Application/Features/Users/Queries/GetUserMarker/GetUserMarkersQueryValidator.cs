@@ -11,7 +11,7 @@ namespace GeoMarker.Application.Features.Users.Queries.GetUserMarker
     {
         public GetUserMarkersQueryValidator()
         {
-            RuleFor(x => x.Id)
+            RuleFor(x => x.UserId)
                 .NotEmpty().WithMessage("User ID is required.")
                 .Must(id => Guid.TryParse(id.ToString(), out _)).WithMessage("Invalid User ID format.");
         }
