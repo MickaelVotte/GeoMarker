@@ -9,6 +9,8 @@ namespace GeoMarker.Infrastructure.Persistence.Configurations
         public void Configure(EntityTypeBuilder<Marker> builder)
         {
             builder.HasKey(m => m.Id);
+            builder.Property(m => m.Id)
+                .ValueGeneratedOnAdd();
             builder.Property(m => m.Title)
                 .IsRequired()
                 .HasMaxLength(100);
