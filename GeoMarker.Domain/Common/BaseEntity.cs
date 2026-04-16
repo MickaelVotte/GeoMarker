@@ -9,7 +9,7 @@ namespace GeoMarker.Domain.Common
 {
     public class BaseEntity
     {
-        public Guid Id { get; private set; } = Guid.NewGuid();
+        public Guid Id { get; private set; }
         public DateTimeOffset CreateAt { get; private set; } = DateTimeOffset.UtcNow;
         public DateTimeOffset? UpdateAt { get; protected set; } 
         public DateTimeOffset? DeleteAt { get; protected set; }

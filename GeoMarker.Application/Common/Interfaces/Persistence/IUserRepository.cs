@@ -10,5 +10,7 @@ namespace GeoMarker.Application.Common.Interfaces.Persistence
 
         Task<bool> ExistsByEmailAsync(string email, CancellationToken cancellationToken = default);
 
+        Task<User?> GetByIdWithMarkersAsync(Guid id, CancellationToken cancellationToken = default);
+
     }
 }

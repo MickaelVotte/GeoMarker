@@ -27,7 +27,7 @@ namespace GeoMarker.Api.Controllers
         {
             var deletecommand = new DesactiveUserCommand(
                 Id: CurrentUserId
-                );
+            );
             var result = await _mediator.Send(deletecommand);
             return NoContent();
 

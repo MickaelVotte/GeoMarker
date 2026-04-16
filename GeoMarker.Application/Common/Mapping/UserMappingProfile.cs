@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GeoMarker.Application.Features.Users.DTOs;
+using GeoMarker.Domain.Entities;
 
 
 namespace GeoMarker.Application.Features.Mapping
@@ -8,16 +9,18 @@ namespace GeoMarker.Application.Features.Mapping
     {
         public UserMappingProfile()
         {
-            CreateMap<Domain.Entities.User, CreateUserResponse>()
+            CreateMap<User, CreateUserResponse>()
                 .ForMember(dest => dest.Token, opt => opt.Ignore());
-            CreateMap<Domain.Entities.User, LoginUserResponse>()
+            CreateMap<User, LoginUserResponse>()
                 .ForMember(dest => dest.Token, opt => opt.Ignore());
-            CreateMap<Domain.Entities.User, UpdateUserResponse>()
+            CreateMap<User, UpdateUserResponse>()
                 .ForMember(dest => dest.Token, opt => opt.Ignore());
-            CreateMap<Domain.Entities.User, DesactiveUserResponse>();
-            CreateMap<Domain.Entities.User, GetUserMarkersResponse>()
-                .ForMember(dest => dest.Markers, opt => opt.Ignore());
-
+            CreateMap<User, DesactiveUserResponse>();
+            CreateMap<User, GetUserMarkersResponse>()
+                .ForMember(dest => dest.Markers, opt => opt.MapFrom(src => src.Markers))
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.Id));
+            CreateMap<User, MarkerDto>();
+               
 
         }
     }

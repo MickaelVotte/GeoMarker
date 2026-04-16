@@ -5,6 +5,7 @@ using GeoMarker.Application.Features.Markers.Queries.GetMarkersByLocation;
 using GeoMarker.Application.Features.Markers.Queries.GetMarkersByUserId;
 using GeoMarker.Application.Features.Markers.Queries.SearchMarkers;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,7 +13,7 @@ namespace GeoMarker.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class MarkerController : ControllerBase
+    public class MarkerController : ApiController
     {
 
         private readonly ISender _mediator;
@@ -22,17 +23,19 @@ namespace GeoMarker.Api.Controllers
             _mediator = mediator;
         }
 
-        [HttpPatch("{id}/desactivate")]
-        public async Task<IActionResult> DeleteMarker([FromBody] DeleteMarkerCommand command)
+        [Authorize]
+        [HttpPatch("/desactivateMarker")]
+        public async Task<IActionResult> DeleteMarker(DeleteMarkerCommand command)
         {
             var deleteCommand = new DeleteMarkerCommand(
-                Id: command.Id,
+                Id: CurrentUserId,
                 UserId: command.UserId
             );
             var result = await _mediator.Send(deleteCommand);
             return NoContent();
         }
-
+        
+        [Authorize]
         [HttpPost("addMarker")]
         public async Task<IActionResult> AddMarker(AddMarkerCommand command)
         {
@@ -40,11 +43,12 @@ namespace GeoMarker.Api.Controllers
             return Created($"api/marker/{result.Id}", result);
         }
 
+        [Authorize]
         [HttpPatch("{id}/updateMarker")]
         public async Task<IActionResult> UpdateMarker([FromBody] UpdateMarkerCommand command)
         {
             var updateCommand = new UpdateMarkerCommand(
-                Id: command.Id,
+                Id: CurrentUserId,
                 Title: command.Title,
                 Description: command.Description,
                 Latitude: command.Latitude,
@@ -55,6 +59,7 @@ namespace GeoMarker.Api.Controllers
             return NoContent();
         }
 
+        
         [HttpGet("location")]
         public async Task<IActionResult> GetMarkerLocation([FromQuery] GetMarkersByLocationQuery query)
         {
@@ -62,6 +67,7 @@ namespace GeoMarker.Api.Controllers
             return Ok(result);
         }
 
+        
         [HttpGet("userId")]
         public async Task<IActionResult> GetMarkerByUserId([FromQuery] GetMarkersByUserIdQuery query)
         {

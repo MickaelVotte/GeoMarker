@@ -1,10 +1,6 @@
 ﻿using AutoMapper;
 using GeoMarker.Application.Features.Groups.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GeoMarker.Domain.Entities;
 
 namespace GeoMarker.Application.Features.Mapping
 {
@@ -12,10 +8,10 @@ namespace GeoMarker.Application.Features.Mapping
     {
         public GroupMappingProfile()
         {
-            CreateMap<Domain.Entities.Group, AddMemberResponse>();
-            CreateMap<Domain.Entities.Group, CreateGroupResponse>();
-            CreateMap<Domain.Entities.Group, DeleteGroupResponse>();
-            CreateMap<Domain.Entities.Group, UpdateGroupResponse>();
+            CreateMap<Group, AddMemberResponse>();
+            CreateMap<Group, CreateGroupResponse>();
+            CreateMap<Group, DeleteGroupResponse>();
+            CreateMap<Group, UpdateGroupResponse>();
         }
     }
 }

@@ -32,6 +32,7 @@ namespace GeoMarker.Infrastructure
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IGroupRepository, GroupRepository>();
             services.AddScoped<IMarkerRepository, MarkerRepository>();
+            services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
 
         }
     }
