@@ -9,6 +9,7 @@ namespace GeoMarker.Application.Interfaces
         Task<IReadOnlyList<Marker>> GetMarkersByUserIdAsync(Guid userId, CancellationToken cancellationToken = default);
         Task<IReadOnlyList<Marker>> SearchMarkersAsync(string? title, string? description, CancellationToken cancellationToken = default);
         Task<IReadOnlyList<Marker>> GetMarkersByLocationAsync(decimal latitude, decimal longitude, decimal radiusInKm, CancellationToken cancellationToken = default);
-       
+        Task<Marker?> GetMarkerByIdAsync(Guid id, CancellationToken cancellationToken = default);
+
     }
 }

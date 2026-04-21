@@ -28,8 +28,8 @@ namespace GeoMarker.Api.Controllers
         public async Task<IActionResult> DeleteMarker(DeleteMarkerCommand command)
         {
             var deleteCommand = new DeleteMarkerCommand(
-                Id: CurrentUserId,
-                UserId: command.UserId
+                Id: command.Id,
+                UserId: CurrentUserId
             );
             var result = await _mediator.Send(deleteCommand);
             return NoContent();

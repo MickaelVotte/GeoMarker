@@ -43,5 +43,10 @@ namespace GeoMarker.Infrastructure.Persistence.Repositories
                                             m.Longitude >= minLongitude && m.Longitude <= maxLongitude)
                                .ToListAsync(cancellationToken);
         }   
+
+        public async Task<Marker?> GetMarkerByIdAsync(Guid id, CancellationToken cancellationToken = default)
+        {
+            return await _dbSet.FirstOrDefaultAsync(m => m.Id == id, cancellationToken);
+        }
     }
 }

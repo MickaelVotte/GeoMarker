@@ -23,7 +23,7 @@ namespace GeoMarker.Application.Features.Markers.Commands.DeleteMarker
 
         public async Task<DeleteMarkerResponse> Handle(DeleteMarkerCommand request, CancellationToken cancellationToken)
         {
-            var marker = await _markerRepository.GetByIdAsync(request.Id, cancellationToken);
+            var marker = await _markerRepository.GetMarkerByIdAsync(request.Id, cancellationToken);
             if (marker is null)
             {
                 throw new KeyNotFoundException($"Marker with id {request.Id} not found.");

@@ -7,11 +7,14 @@ using System.Threading.Tasks;
 namespace GeoMarker.Application.Features.Markers.DTOs
 {
     public record DeleteMarkerResponse
-    (
-        Guid Id,
-        string Title,
-        string Description,
-        decimal Latitude,
-        decimal Longitude
-    );
+    {
+        public Guid Id { get; init; }
+        public string Title { get; init; } = null!;
+        public string Description { get; init; } = null!;
+        public decimal Latitude { get; init; }
+        public decimal Longitude { get; init; } 
+        public bool IsActive { get; init; } 
+    }
+        
+    
 }
