@@ -48,12 +48,12 @@ namespace GeoMarker.Api.Controllers
         public async Task<IActionResult> UpdateMarker([FromBody] UpdateMarkerCommand command)
         {
             var updateCommand = new UpdateMarkerCommand(
-                Id: CurrentUserId,
+                Id: command.Id,
                 Title: command.Title,
                 Description: command.Description,
                 Latitude: command.Latitude,
                 Longitude: command.Longitude,
-                UserId: command.UserId
+                UserId: CurrentUserId
             );
             var result = await _mediator.Send(updateCommand);
             return NoContent();

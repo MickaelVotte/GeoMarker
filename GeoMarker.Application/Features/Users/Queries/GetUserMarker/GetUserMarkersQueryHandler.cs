@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GeoMarker.Application.Common.Interfaces.Persistence;
 using GeoMarker.Application.Features.Users.DTOs;
+using GeoMarker.Application.Interfaces;
 using MediatR;
 
 namespace GeoMarker.Application.Features.Users.Queries.GetUserMarker
@@ -17,6 +18,7 @@ namespace GeoMarker.Application.Features.Users.Queries.GetUserMarker
         public async Task<GetUserMarkersResponse> Handle(GetUserMarkersQuery request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetByIdWithMarkersAsync(request.UserId, cancellationToken);
+            
             if (user == null)
             {
                 throw new KeyNotFoundException($"User with ID {request.UserId} not found.");

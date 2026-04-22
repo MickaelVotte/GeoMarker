@@ -25,7 +25,7 @@ namespace GeoMarker.Application.Features.Markers.Commands.UpdateMarker
 
         public async Task<UpdateMarkerResponse> Handle(UpdateMarkerCommand request, CancellationToken cancellationToken)
         {
-            var marker = await _markerRepository.GetByIdAsync(request.Id, cancellationToken);
+            var marker = await _markerRepository.GetMarkerByIdAsync(request.Id, cancellationToken);
 
             if (marker is null)
             {

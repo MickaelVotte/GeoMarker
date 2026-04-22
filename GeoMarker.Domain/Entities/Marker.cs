@@ -32,6 +32,10 @@ namespace GeoMarker.Domain.Entities
 
         public void UpdateTitle(string title)
         {
+            if (!IsActive)
+            {
+              throw new InvalidOperationException("Cannot update a desactivated marker.");
+            }
             if (string.IsNullOrWhiteSpace(title))
             {
                 throw new ArgumentException("Title cannot be null or empty", nameof(title));
@@ -42,13 +46,21 @@ namespace GeoMarker.Domain.Entities
 
         public void UpdateDescription(string? description)
         {
+            if (!IsActive)
+            {
+                throw new InvalidOperationException("Cannot update a desactivated marker.");
+            }
             Description = description;
             UpdateAt = DateTimeOffset.UtcNow;
         }
 
         public void UpdateLocation(decimal latitude, decimal longitude)
-
         {
+            if (!IsActive)
+            {
+                throw new InvalidOperationException("Cannot update a desactivated marker.");
+            }
+
             ValidateLocation(latitude,longitude);
 
             Latitude = latitude;
@@ -58,6 +70,11 @@ namespace GeoMarker.Domain.Entities
 
         public void ValidateLocation(decimal latitude, decimal longitude)
         {
+            if (!IsActive)
+            {
+                throw new InvalidOperationException("Cannot update a desactivated marker.");
+            }
+
             if (latitude < -90 || latitude > 90)
             {
                 throw new ArgumentOutOfRangeException(nameof(latitude), "Latitude must be between -90 and 90.");
@@ -72,6 +89,12 @@ namespace GeoMarker.Domain.Entities
         {
             IsActive = false;
             DeleteAt = DateTimeOffset.UtcNow;
+        }
+
+        public void Activate()
+        {
+            IsActive = true;
+            UpdateAt = DateTimeOffset.UtcNow;
         }
 
     }
